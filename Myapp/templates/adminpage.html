@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Wellness Login</title>
+    <link rel="stylesheet" href="{% static 'loginpage/style.css' %}">
+</head>
+<body>
+<div class="login-container">
+        <div class="wellness-card">
+            <div class="organic-border"></div>
+
+            <div class="mindful-header">
+                <div class="zen-logo">
+                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                        <circle cx="28" cy="28" r="26" stroke="currentColor" stroke-width="2" fill="none" opacity="0.6"/>
+                        <circle cx="28" cy="28" r="18" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.8"/>
+                        <circle cx="28" cy="28" r="10" fill="currentColor" opacity="0.9"/>
+                        <path d="M28 18v20M18 28h20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <div class="zen-glow"></div>
+                </div>
+                <h1>Admin Login</h1>
+            </div>
+
+            <form class="harmony-form" method="post" action="{% url 'AdminLogin' %}">
+                {% csrf_token %}
+                <div class="organic-field">
+                    <div class="field-nature"></div>
+                    <input type="text" name="username">
+                    <label >Username</label>
+                    <div class="growth-indicator">
+                        <div class="leaf-sprout"></div>
+                    </div>
+                </div>
+
+                <div class="organic-field">
+                    <div class="field-nature"></div>
+                    <input type="password" name="password" required>
+                    <label >Password</label>
+                </div>
+
+
+                <button type="submit" class="harmony-button">
+                    <div class="button-earth"></div>
+                    <span class="button-text">Login</span>
+                    <div class="button-growth">
+                        <div class="growing-circle circle-1"></div>
+                        <div class="growing-circle circle-2"></div>
+                        <div class="growing-circle circle-3"></div>
+                    </div>
+                    <div class="button-aura"></div>
+                </button>
+            </form>
+
+
+        </div>
+    </div>
+</body>
+</html>

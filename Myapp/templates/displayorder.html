@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>Order Details</title>
+</head>
+
+<body>
+<div class="container-fluid" style="margin:0px; padding:0px;">
+  <div class="card " style="width:auto; border:1px solid lightgrey; height:auto;">
+    <div class="card-body">
+      <h1 class="text-center mb-5" style="color:darkgreen; font-size:35px; font-weight:bold; font-family:Arial;">
+        Order Details
+      </h1>
+ <div class="table-responsive">
+      <table class="table table-bordered table-hover table-success">
+        <thead class="table-success text-center">
+          <tr>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Payment Method</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody class="text-center">
+          {% for i in data %}
+          <tr>
+            <td>{{i.Order_fullname}}</td>
+            <td>{{i.Order_email}}</td>
+            <td>{{i.Order_phone}}</td>
+            <td>{{i.Order_address}}</td>
+            <td>{{i.Order_payment}}</td>
+            <td>
+              <a href="{% url 'deleteorder' o_id=i.id %}">
+                <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
+{% endblock %}

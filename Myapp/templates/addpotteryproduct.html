@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poterie - Add Product</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+    <div class="container-fluid mb-5" style="padding:0px 200px;">
+        <div style="border: 1px solid #b6b6b6; padding: 30px; font-weight: bold; font-size: 18px; color: rgb(6, 6, 45); border-radius: 12px; background-color: rgba(255, 255, 255, 0.171); width:800px;">
+            <form action="{% url 'savepottery' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1 class="text-center mb-4" style="color: #0c2d20; font-weight: bold;">Add Pottery Product</h1>
+
+                <!-- Product Name -->
+                <div class="mb-3">
+                    <label class="form-label">Product Name</label>
+                    <input type="text" placeholder="Enter Product Name" class="form-control" name="pottery_name" required>
+                </div>
+
+                <!-- Product Category -->
+                <div class="mb-3">
+                    <label class="form-label">Product Category</label>
+                    <select class="form-control" name="pottery_category" required>
+                        <option>-- Select Category --</option>
+                        {% for i in product %}
+                        <option>{{i.Product_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Product Description -->
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea placeholder="Enter Product Description" class="form-control" name="pottery_description" required></textarea>
+                </div>
+
+                <!-- Product Price -->
+                <div class="mb-3">
+                    <label class="form-label">Price</label>
+                    <input type="number" placeholder="Enter Price" class="form-control" name="pottery_price"  min="0" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Product Image</label>
+                    <input type="file" class="form-control" name="pottery_image" required>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="mb-3 mt-3 text-center">
+                    <button type="submit" class="btn btn-success" style="width: 200px; border-radius: 12px; font-size: 20px;">Add Product</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
