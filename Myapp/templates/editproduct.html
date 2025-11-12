@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<body style="background-color: #f0f8f5;">
+<div class="container-fluid" style="padding:5px;">
+    <div class="container mt-5 mb-5 p-5 rounded shadow"
+        style="max-width: 600px; background-color: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.4);">
+        <h2 class="text-center mb-4" style="color: rgb(14, 59, 36); font-family:'Georgia', serif;">Product Data</h2>
+
+        <form method="POST" action="{% url 'updateproduct' w_id=d.id %}">
+            {% csrf_token %}
+
+             <div class="mb-3">
+                        <label class="form-label">Product Name :</label>
+                       <input type="text" placeholder="Product Name" name="product_name" value="{{d.Product_name}}">
+             </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success me-2" style="width: 120px;">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}
