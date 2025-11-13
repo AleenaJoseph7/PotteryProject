@@ -83,25 +83,27 @@
     </div>
 
     <!-- Account Dropdown -->
-      {% if request.session.username %}
-      <div class="nav-item dropdown me-3">
-      <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center" data-bs-toggle="dropdown">
-        <i class="fas fa-user-circle fa-lg me-2"></i>Welcome, {{request.session.username}}
-      </a>
-      <div class="dropdown-menu dropdown-menu-end m-0">
-        <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
-      </div>
-    </div>
-      {% else %}
+       {% if request.session.username %}
     <div class="nav-item dropdown me-3">
-      <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center" data-bs-toggle="dropdown">
-        <i class="fas fa-user-circle fa-lg me-2"></i>Account
-      </a>
-      <div class="dropdown-menu dropdown-menu-end m-0">
-        <a href="{% url 'login' %}" class="dropdown-item">Login</a>
-      </div>
+        <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center" data-bs-toggle="dropdown">
+        <i class="fas fa-user-circle fa-lg me-2"></i>Welcome, {{ request.session.username }} </a>
+        <div class="dropdown-menu dropdown-menu-end m-0">
+            <a href="{% url 'Cartpage' %}" class="dropdown-item {% if request.resolver_match.url_name == 'Cartpage' %}active{% endif %}"> Your Cart </a>
+        <a href="{% url 'logout' %}" class="dropdown-item">Logout </a>
+        </div>
     </div>
-      {% endif %}
+
+    {% else %}
+    <div class="nav-item dropdown me-3">
+        <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center" data-bs-toggle="dropdown">
+        <i class="fas fa-user-circle fa-lg me-2"></i>Account
+    </a>
+    <div class="dropdown-menu dropdown-menu-end m-0">
+        <a href="{% url 'login' %}" class="dropdown-item">Login</a>
+    </div>
+    </div>
+    {% endif %}
+
 
     <!-- Search Bar (Moved out of navbar-nav) -->
     <form class="d-flex me-4" role="search">

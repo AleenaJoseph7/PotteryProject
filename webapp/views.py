@@ -47,12 +47,6 @@ def Singleproductpage(request,pottery_id):
     product = productdb.objects.all()
     return render(request,"singleproduct.html",{'pottery':pottery,'product':product})
 
-def usersignup(request):
-    return render(request,"Usersignup.html")
-
-def userlogin(request):
-    return render(request,"Userlogin.html")
-
 def savebooking(request):
     if request.method=='POST':
         book_first=request.POST.get('book_first')
@@ -94,6 +88,17 @@ def saveorder(request):
         ob.save()
         return redirect(Orderpage)
 
+def Checkoutpage(request):
+    product = productdb.objects.all()
+    return render(request,"Checkoutpage.html",{'product':product})
+
+
+
+def usersignup(request):
+    return render(request,"Usersignup.html")
+
+def userlogin(request):
+    return render(request,"Userlogin.html")
 
 def saveusersignup(request):
     if request.method=='POST':

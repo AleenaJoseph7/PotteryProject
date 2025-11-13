@@ -116,106 +116,114 @@
 
     <div class="container-fluid main_wrapper" style="margin-top:124px; padding:20px 50px;">
 
-<div class="container cart-container my-5" style="border:1px solid lightgrey; border-radius:12px; width:auto; height:auto; padding:20px;">
-  <div style="display:flex; gap:40px; text-align:center; mt-5 mb-5">
-              <hr style="width:500px; border:1.5px solid rgb(106, 148, 106); border-radius:12px;">
-              <h1 style="color:rgb(10, 62, 10);">Your Cart</h1>
-              <hr style="width:500px; border:1.5px solid rgb(106, 148, 106);border-radius:12px;">
-  </div>
-    <!-- Cart Items Section -->
-<div class="col-12 mb-4">
-  <div class="card border-0 shadow-sm">
+ <div class="container py-5">
+    <div class="row">
+      <!-- Customer Details Form -->
+      <div class="col-lg-7 mb-4">
+        <div class="card border-0 shadow-sm p-4" style="border-radius:10px;">
+          <h4 class="fw-bold mb-4" style="color:#4a6b50;">Shipping Details</h4>
 
-    <div class="card-body p-0">
-
-      <div class="table-responsive">
-        <table class="table table-bordered align-middle mb-0">
-          <tbody>
-            {% for i in cart %}
-            <tr  class="text-center">
-              <td>
-                <img src="{{ item.Singlepottery_image.url }}" alt="Product Image" width="150px" height="150px" class="rounded-circle">
-              </td>
-              <td><strong>{{i.Singlepottery_name}}</strong></td>
-              <td >₹{{i.Singlepottery_price}}</td>
-              <td >{{i.Singlepottery_quantity}}</td>
-              <td >₹{{i.Singlepottery_total}}</td>
-              <td >
-                <a href="#" class="btn btn-outline-danger "> Remove </a>
-              </td>
-            </tr>
-            {% empty %}
-            <div class="text-center py-5">
-            <h5 class="text-muted">Your cart is empty.</h5>
-            <a href="{% url 'Creationpage' %}" class="btn btn-outline-success mt-3">Continue Shopping</a>
+          <form method="POST" action="{% url 'Orderpage' %}">
+            {% csrf_token %}
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Full Name</label>
+                <input type="text" name="name" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Email</label>
+                <input type="email" name="email" class="form-control" required>
+              </div>
             </div>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
 
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Address</label>
+              <textarea name="address" class="form-control" rows="3" required></textarea>
+            </div>
 
-  <!-- Price Summary Section -->
-  <div class="col-12">
-  <div class="card border-0 shadow-sm">
-    <div class="card-body">
-      <h5 class="fw-bold mb-4 text-uppercase" style="color:#4a6b50;">Order Details</h5>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">City</label>
+                <input type="text" name="city" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Pincode</label>
+                <input type="text" name="pincode" class="form-control" required>
+              </div>
+            </div>
 
-      <!-- Items Info -->
-      <div class="row mb-2">
-        <div class="col-6">Items</div>
-        <div class="col-6 text-end fw-semibold">10</div>
-      </div>
+            <div class="mb-4">
+              <label class="form-label fw-semibold">Payment Method</label>
+              <select class="form-select" name="payment_method" required>
+                <option value="">Select</option>
+                <option value="COD">Cash on Delivery</option>
+                <option value="UPI">UPI</option>
+                <option value="Card">Credit/Debit Card</option>
+              </select>
+            </div>
 
-      <div class="row mb-2">
-        <div class="col-6">Total Price</div>
-        <div class="col-6 text-end fw-semibold">
-            Rs. 5500
+            <a href="{% url 'Orderpage' %}" type="submit" class="btn w-100 py-2"
+              style="background-color:#4a6b50; color:#fff; font-weight:600;">Place Order</a>
+          </form>
         </div>
       </div>
 
-      <!-- Delivery -->
-      <div class="row mb-2">
-        <div class="col-6">Delivery Charges</div>
-        Rs. 100
-      </div>
+      <!-- Order Summary -->
+      <div class="col-lg-5">
+        <div class="card border-0 shadow-sm p-4" style="border-radius:10px;">
+          <h4 class="fw-bold mb-4" style="color:#4a6b50;">Order Summary</h4>
 
-      <!-- GST -->
-      <div class="row mb-2">
-        <div class="col-6">GST (5%)</div>
-        <div class="col-6 text-end fw-semibold">Rs. 250</div>
-      </div>
+          <div class="table-responsive">
+            <table class="table table-striped align-middle">
+              <thead style="background:#e8efe9;">
+                <tr>
+                  <th>Product</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in cart_items %}
+                <tr>
+                  <td>{{ item.Singlepottery_name }}</td>
+                  <td>{{ item.Singlepottery_quantity }}</td>
+                  <td>₹{{ item.Singlepottery_total }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
 
-      <!-- Discount -->
-      <div class="row mb-2">
-        <div class="col-6">Discount</div>
-        <div class="col-6 text-end text-success fw-semibold">Rs. 200</div>
-      </div>
+          <hr>
 
-      <hr>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Subtotal</span>
+            <span>Rs. 5500</span>
+          </div>
 
-      <!-- Final Total -->
-      <div class="row total-price mb-3">
-        <div class="col-6 fw-bold">Final Amount</div>
-        <div class="col-6 text-end fw-bold text-dark">Rs. 5650 </div>
-      </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Delivery Charge</span>
+            <span class="text-success">Free</span>
+          </div>
 
-      <p class="text-muted small mb-3 text-center">Inclusive of all taxes and charges</p>
+          <div class="d-flex justify-content-between mb-2">
+            <span>GST (5%)</span>
+            <span>Rs. 250</span>
+          </div>
 
-      <div class="mt-3">
-        <a href="{% url 'Checkoutpage' %}" class="btn w-100 py-2"
-          style="background-color:#4a6b50; border:none; color:white; font-weight:600;">
-          CheckOut
-        </a>
+          <hr>
+          <div class="d-flex justify-content-between fw-bold fs-5">
+            <span>Total</span>
+            <span style="color:#4a6b50;">Rs. 5650</span>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="{% url 'Cartpage' %}" class="btn btn-outline-success w-100">Back to Cart</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-</div>
 
     </div>
 

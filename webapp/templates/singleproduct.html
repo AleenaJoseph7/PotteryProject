@@ -86,25 +86,27 @@
     </div>
 
     <!-- Account Dropdown -->
-      {% if request.session.username %}
-      <div class="nav-item dropdown me-3">
-      <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center" data-bs-toggle="dropdown">
-        <i class="fas fa-user-circle fa-lg me-2"></i>Welcome, {{request.session.username}}
-      </a>
-      <div class="dropdown-menu dropdown-menu-end m-0">
-        <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
-      </div>
-    </div>
-      {% else %}
+        {% if request.session.username %}
     <div class="nav-item dropdown me-3">
-      <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center" data-bs-toggle="dropdown">
-        <i class="fas fa-user-circle fa-lg me-2"></i>Account
-      </a>
-      <div class="dropdown-menu dropdown-menu-end m-0">
-        <a href="{% url 'login' %}" class="dropdown-item">Login</a>
-      </div>
+        <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center" data-bs-toggle="dropdown">
+        <i class="fas fa-user-circle fa-lg me-2"></i>Welcome, {{ request.session.username }} </a>
+        <div class="dropdown-menu dropdown-menu-end m-0">
+            <a href="{% url 'Cartpage' %}" class="dropdown-item {% if request.resolver_match.url_name == 'Cartpage' %}active{% endif %}"> Your Cart </a>
+        <a href="{% url 'logout' %}" class="dropdown-item">Logout </a>
+        </div>
     </div>
-      {% endif %}
+
+    {% else %}
+    <div class="nav-item dropdown me-3">
+        <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center" data-bs-toggle="dropdown">
+        <i class="fas fa-user-circle fa-lg me-2"></i>Account
+    </a>
+    <div class="dropdown-menu dropdown-menu-end m-0">
+        <a href="{% url 'login' %}" class="dropdown-item">Login</a>
+    </div>
+    </div>
+    {% endif %}
+
 
     <!-- Search Bar (Moved out of navbar-nav) -->
     <form class="d-flex me-4" role="search">
@@ -139,13 +141,13 @@
                 <form>
                         <input type="number" min="1" max="10" class="form-control mb-3 mt-3" style="width:175px;" placeholder="quantity" value="1" name="singlepottery_quantity">
                         <input type="text" class="form-control mb-3 mt-3" style="width:175px;" placeholder="Rs " name="singlepottery_total">
-                        <input type="text" class="form-control mb-3 mt-3"  placeholder="Product Name" name="singlepottery_name" value="{{pottery.Pottery_name}}" >
-                        <input type="text" class="form-control mb-3 mt-3" placeholder= "Price" name="singlepottery_price" value="{{pottery.Pottery_price}}" >
-                        <input type="text" class="form-control mb-3 mt-3"  placeholder="Username" name="singlepottery_username" value="{{request.session.username}}" >
+                        <input type="hidden" class="form-control mb-3 mt-3"  placeholder="Product Name" name="singlepottery_name" value="{{pottery.Pottery_name}}" >
+                        <input type="hidden" class="form-control mb-3 mt-3" placeholder= "Price" name="singlepottery_price" value="{{pottery.Pottery_price}}" >
+                        <input type="hidden" class="form-control mb-3 mt-3"  placeholder="Username" name="singlepottery_username" value="{{request.session.username}}" >
                     {% if request.session.username %}
                               <div style="display:flex; justify-content:justify; gap:25px;" class="mb-5 ">
                                     <a  href="{% url 'Cartpage' %}" class="btn btn-outline-primary btn-sm" style="border-radius:8px; width:150px; height:40px; font-size:18px;">Add to Cart</a>
-                                     <a href="{% url 'Orderpage' %}" class="btn btn-outline-success btn-sm" style="border-radius:8px; width:150px; height:40px; font-size:18px;">Order</a>
+                                     <a href="{% url 'Checkoutpage' %}" class="btn btn-outline-success btn-sm" style="border-radius:8px; width:150px; height:40px; font-size:18px;">Checkout</a>
                               </div>
                     {% else %}
                              <div style="display:flex; justify-content:justify; gap:25px;" class="mb-5 ">
