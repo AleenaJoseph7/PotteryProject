@@ -137,8 +137,11 @@
                 </p>
 
                 <form>
-                        <input type="number" min="1" max="10" class="form-control mb-3 mt-3" style="width:175px;" placeholder="quantity" value="1">
-                        <input type="text" class="form-control mb-3 mt-3" style="width:175px;" placeholder="Rs " >
+                        <input type="number" min="1" max="10" class="form-control mb-3 mt-3" style="width:175px;" placeholder="quantity" value="1" name="singlepottery_quantity">
+                        <input type="text" class="form-control mb-3 mt-3" style="width:175px;" placeholder="Rs " name="singlepottery_total">
+                        <input type="text" class="form-control mb-3 mt-3"  placeholder="Product Name" name="singlepottery_name" value="{{pottery.Pottery_name}}" >
+                        <input type="text" class="form-control mb-3 mt-3" placeholder= "Price" name="singlepottery_price" value="{{pottery.Pottery_price}}" >
+                        <input type="text" class="form-control mb-3 mt-3"  placeholder="Username" name="singlepottery_username" value="{{request.session.username}}" >
                     {% if request.session.username %}
                               <div style="display:flex; justify-content:justify; gap:25px;" class="mb-5 ">
                                     <a  href="{% url 'Cartpage' %}" class="btn btn-outline-primary btn-sm" style="border-radius:8px; width:150px; height:40px; font-size:18px;">Add to Cart</a>
