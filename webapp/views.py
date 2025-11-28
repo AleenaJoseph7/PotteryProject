@@ -19,7 +19,6 @@ def Bookingpage(request):
     duration = catergorydb.objects.all()
     return render(request, "Bookingpage.html", {'product': product, 'duration': duration})
 
-
 def Legacygpage(request):
     product = productdb.objects.all()
     return render(request, "Legacypage.html", {'product': product})
