@@ -3,293 +3,313 @@
 {% load static %}
 
 <head>
-  <meta charset="utf-8">
-  <title>Poteria</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    <meta charset="utf-8">
+    <title>Poteria</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-  <!-- Favicon -->
-  <link href="{% static 'website/img/favicon.ico' %}" rel="icon">
+    <!-- Favicon -->
+    <link href="{% static 'website/img/favicon.ico' %}" rel="icon">
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;700&family=Work+Sans:wght@400;600&display=swap"
-    rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;700&family=Work+Sans:wght@400;600&display=swap"
+            rel="stylesheet">
 
-  <!-- Icon Font Stylesheet -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- Libraries Stylesheet -->
-  <link href="{% static 'website/lib/animate/animate.min.css' %}" rel="stylesheet">
-  <link href="{% static 'website/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'website/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'website/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'website/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'website/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
 
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="{% static 'website/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'website/css/bootstrap.min.css' %}" rel="stylesheet">
 
-  <!-- Template Stylesheet -->
-  <link href="{% static 'website/css/style.css' %}" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link href="{% static 'website/css/style.css' %}" rel="stylesheet">
 </head>
 
 <body style=" background-image: url({% static 'website/images/service_bg.jpg' %});">
-  <!-- Spinner Start -->
-  <div id="spinner"
-    class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+<!-- Spinner Start -->
+<div id="spinner"
+     class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
     <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-      <span class="sr-only">Loading...</span>
+        <span class="sr-only">Loading...</span>
     </div>
-  </div>
-  <!-- Spinner End -->
+</div>
+<!-- Spinner End -->
 
 
-  <!-- Header Start -->
-  <div class="container-fluid p-0 ">
-     <nav class="navbar navbar-expand-lg" style="background-color:rgb(0,0,0);">
-  <a href="{% url 'Homepage' %}" class="navbar-brand ms-4 ms-lg-0 d-flex align-items-center">
-    <h2 class="mb-0 text-uppercase" style="color: white; font-weight: bold; margin-left:30px; margin-right:20px;">Poterie</h2>
-  </a>
+<!-- Header Start -->
+<div class="container-fluid p-0 ">
+    <nav class="navbar navbar-expand-lg" style="background-color:rgb(0,0,0);">
+        <a href="{% url 'Homepage' %}" class="navbar-brand ms-4 ms-lg-0 d-flex align-items-center">
+            <h2 class="mb-0 text-uppercase"
+                style="color: white; font-weight: bold; margin-left:30px; margin-right:20px;">Poterie</h2>
+        </a>
 
-  <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-    style="border-color: white;">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                style="border-color: white;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <div class="navbar-nav mx-auto p-4 p-lg-0">
-      <a href="{% url 'Homepage' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'Homepage' %}active{% endif %}">Home</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto p-4 p-lg-0">
+                <a href="{% url 'Homepage' %}"
+                   class="nav-item nav-link {% if request.resolver_match.url_name == 'Homepage' %}active{% endif %}">Home</a>
 
-      <a href="{% url 'Creationpage' %}" class="nav-item nav-link {% if request.resolver_match.url_name == 'Creationpage' %}active{% endif %}">Creations</a>
+                <a href="{% url 'Creationpage' %}"
+                   class="nav-item nav-link {% if request.resolver_match.url_name == 'Creationpage' %}active{% endif %}">Creations</a>
 
-      <div class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Products</a>
-        <div class="dropdown-menu m-0">
-          {% for i in product %}
-          <a href="{% url 'Categorypage' product_name=i.Product_name %}" class="dropdown-item {% if i.Product_name == product_name %}active{% endif %}">{{i.Product_name}}</a>
-          {% endfor %}
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Products</a>
+                    <div class="dropdown-menu m-0">
+                        {% for i in product %}
+                        <a href="{% url 'Categorypage' product_name=i.Product_name %}"
+                           class="dropdown-item {% if i.Product_name == product_name %}active{% endif %}">{{i.Product_name}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <a href="{% url 'Bookingpage' %}"
+                   class="nav-item nav-link text-white {% if request.resolver_match.url_name == 'Bookingpage' %}active{% endif %}">Booking</a>
+
+                <a href="{% url 'Workshoppage' %}"
+                   class="nav-item nav-link text-white {% if request.resolver_match.url_name == 'Workshoppage' %}active{% endif %}">Workshops</a>
+
+                <a href="{% url 'Contactpage' %}"
+                   class="nav-item nav-link text-white {% if request.resolver_match.url_name == 'Contactpage' %}active{% endif %}">Contact</a>
+
+                <a href="{% url 'Legacygpage' %}"
+                   class="nav-item nav-link text-white {% if request.resolver_match.url_name == 'Legacygpage' %}active{% endif %}">Legacy</a>
+            </div>
+
+            <!-- Account Dropdown -->
+            {% if request.session.username %}
+            <div class="nav-item dropdown me-3">
+                <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center"
+                   data-bs-toggle="dropdown">
+                    <i class="fas fa-user-circle fa-lg me-2"></i>Welcome, {{ request.session.username }} </a>
+                <div class="dropdown-menu dropdown-menu-end m-0">
+                    <a href="{% url 'Cartpage' %}"
+                       class="dropdown-item {% if request.resolver_match.url_name == 'Cartpage' %}active{% endif %}">
+                        Your Cart </a>
+                    <a href="{% url 'logout' %}" class="dropdown-item">Logout </a>
+                </div>
+            </div>
+
+            {% else %}
+            <div class="nav-item dropdown me-3">
+                <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center"
+                   data-bs-toggle="dropdown">
+                    <i class="fas fa-user-circle fa-lg me-2"></i>Account
+                </a>
+                <div class="dropdown-menu dropdown-menu-end m-0">
+                    <a href="{% url 'login' %}" class="dropdown-item">Login</a>
+                </div>
+            </div>
+            {% endif %}
+
+
+            <!-- Search Bar (Moved out of navbar-nav) -->
+            <form class="d-flex me-4" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
-      </div>
+    </nav>
+</div>
 
-      <a href="{% url 'Bookingpage' %}" class="nav-item nav-link text-white {% if request.resolver_match.url_name == 'Bookingpage' %}active{% endif %}">Booking</a>
+<div class="container-fluid main_wrapper" style="margin-top:124px;">
 
-      <a href="{% url 'Workshoppage' %}" class="nav-item nav-link text-white {% if request.resolver_match.url_name == 'Workshoppage' %}active{% endif %}">Workshops</a>
-
-      <a href="{% url 'Contactpage' %}" class="nav-item nav-link text-white {% if request.resolver_match.url_name == 'Contactpage' %}active{% endif %}">Contact</a>
-
-      <a href="{% url 'Legacygpage' %}" class="nav-item nav-link text-white {% if request.resolver_match.url_name == 'Legacygpage' %}active{% endif %}">Legacy</a>
-    </div>
-
-    <!-- Account Dropdown -->
-        {% if request.session.username %}
-    <div class="nav-item dropdown me-3">
-        <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center" data-bs-toggle="dropdown">
-        <i class="fas fa-user-circle fa-lg me-2"></i>Welcome, {{ request.session.username }} </a>
-        <div class="dropdown-menu dropdown-menu-end m-0">
-            <a href="{% url 'Cartpage' %}" class="dropdown-item {% if request.resolver_match.url_name == 'Cartpage' %}active{% endif %}"> Your Cart </a>
-        <a href="{% url 'logout' %}" class="dropdown-item">Logout </a>
+    <div class="container-fluid text-center"
+         style="margin-top:120px; background-image: url('{% static 'admin/images/service_bg.jpg' %}'); ">
+        <div class="container-fluid">
+            <h1 style="font-weight:bold; color:rgb(14, 59, 36);">Mould Your Skills</h1>
+            <p style="color:rgb(70, 70, 55); font-size:18px;">Choose your clay journey from a quick hands-on day to a
+                professional 6-month deep dive.</p>
         </div>
-    </div>
-
-    {% else %}
-    <div class="nav-item dropdown me-3">
-        <a href="#" class="nav-link dropdown-toggle text-white d-flex align-items-center" data-bs-toggle="dropdown">
-        <i class="fas fa-user-circle fa-lg me-2"></i>Account
-    </a>
-    <div class="dropdown-menu dropdown-menu-end m-0">
-        <a href="{% url 'login' %}" class="dropdown-item">Login</a>
-    </div>
-    </div>
-    {% endif %}
 
 
-    <!-- Search Bar (Moved out of navbar-nav) -->
-    <form class="d-flex me-4" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-  </div>
+        <div class="container mt-5">
+            <div class="row g-4">
 
-    <div class="container-fluid main_wrapper" style="margin-top:124px;">
-
-<div class="container-fluid text-center"
-    style="margin-top:120px; background-image: url('{% static 'admin/images/service_bg.jpg' %}'); ">
-    <div class="container-fluid">
-        <h1 style="font-weight:bold; color:rgb(14, 59, 36);">Mould Your Skills</h1>
-        <p style="color:rgb(70, 70, 55); font-size:18px;">Choose your clay journey from a quick hands-on day to a
-            professional 6-month deep dive.</p>
-    </div>
-
-
-    <div class="container mt-5">
-        <div class="row g-4">
-
-            <div class="col-md-6">
-                <div class="card shadow-sm h-100" style="border:none; background-color: rgba(255, 255, 255, 0.265);">
-                    <img src="{% static 'website/images/b1.jpg' %}" class="card-img-top" alt="1 Day Pottery Class"
-                        style="border-radius:8px; height:300px; object-fit:cover;">
-                    <div class="card-body text-center">
-                        <h3 style="color:rgb(14,59,36); font-weight:bold;">1 Day Discovery</h3>
-                        <p style="color:rgb(21, 71, 44); font-size: 18px;"> <i> A fun crash course to try your hands
+                <div class="col-md-6">
+                    <div class="card shadow-sm h-100"
+                         style="border:none; background-color: rgba(255, 255, 255, 0.265);">
+                        <img src="{% static 'website/images/b1.jpg' %}" class="card-img-top" alt="1 Day Pottery Class"
+                             style="border-radius:8px; height:300px; object-fit:cover;">
+                        <div class="card-body text-center">
+                            <h3 style="color:rgb(14,59,36); font-weight:bold;">1 Day Discovery</h3>
+                            <p style="color:rgb(21, 71, 44); font-size: 18px;"><i> A fun crash course to try your hands
                                 at
                                 the wheel, shape your first clay piece, and take home your handmade souvenir.</i>
-                        </p>
-                        <div class="price-flip">
-                            <div class="price-inner">
-                                <div class="price-front">
-                                    <span>₹500</span>
-                                </div>
-                                <div class="price-back">
-                                    <a href="{% url 'Bookingpage' %}" class="btn flip-btn">Book Now</a>
+                            </p>
+                            <div class="price-flip">
+                                <div class="price-inner">
+                                    <div class="price-front">
+                                        <span>₹500</span>
+                                    </div>
+                                    <div class="price-back">
+                                        <a href="{% url 'Bookingpage' %}" class="btn flip-btn">Book Now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6">
-                <div class="card shadow-sm h-100" style="border:none; background-color: rgba(255, 255, 255, 0.265);">
-                    <img src="{% static 'website/images/service2.jpg' %}" class="card-img-top" alt="1 Week Pottery Class"
-                        style="border-radius:8px; height:300px; object-fit:cover;">
-                    <div class="card-body text-center">
-                        <h3 style="color:rgb(14,59,36); font-weight:bold;">1 Week Basics</h3>
-                        <p style="color:rgb(21, 71, 44); font-size: 18px;"><i>Learn the fundamentals of pottery to
+                <div class="col-md-6">
+                    <div class="card shadow-sm h-100"
+                         style="border:none; background-color: rgba(255, 255, 255, 0.265);">
+                        <img src="{% static 'website/images/service2.jpg' %}" class="card-img-top"
+                             alt="1 Week Pottery Class"
+                             style="border-radius:8px; height:300px; object-fit:cover;">
+                        <div class="card-body text-center">
+                            <h3 style="color:rgb(14,59,36); font-weight:bold;">1 Week Basics</h3>
+                            <p style="color:rgb(21, 71, 44); font-size: 18px;"><i>Learn the fundamentals of pottery to
                                 hand-building, glazing, and basic wheel work. Perfect for beginners!</i></p>
-                        <div class="price-flip">
-                            <div class="price-inner">
-                                <div class="price-front">
-                                    <span>₹2000</span>
-                                </div>
-                                <div class="price-back">
-                                    <a href="{% url 'Bookingpage' %}" class="btn flip-btn">Book Now</a>
+                            <div class="price-flip">
+                                <div class="price-inner">
+                                    <div class="price-front">
+                                        <span>₹2000</span>
+                                    </div>
+                                    <div class="price-back">
+                                        <a href="{% url 'Bookingpage' %}" class="btn flip-btn">Book Now</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm h-100" style="border:none; background-color: rgba(255, 255, 255, 0.265);">
-                    <img src="{% static 'website/images/service3.jpg' %}" class="card-img-top" alt="1 Month Pottery Class"
-                        style="border-radius:8px; height:300px; object-fit:cover;">
-                    <div class="card-body text-center">
-                        <h3 style="color:rgb(14,59,36); font-weight:bold;">1 Month Explorer</h3>
-                        <p style="color:rgb(21, 71, 44); font-size: 18px;"><i>Go deeper into techniques to improve
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm h-100"
+                         style="border:none; background-color: rgba(255, 255, 255, 0.265);">
+                        <img src="{% static 'website/images/service3.jpg' %}" class="card-img-top"
+                             alt="1 Month Pottery Class"
+                             style="border-radius:8px; height:300px; object-fit:cover;">
+                        <div class="card-body text-center">
+                            <h3 style="color:rgb(14,59,36); font-weight:bold;">1 Month Explorer</h3>
+                            <p style="color:rgb(21, 71, 44); font-size: 18px;"><i>Go deeper into techniques to improve
                                 shaping, glazing, and finishing. Create a small collection of personal works.</i>
-                        </p>
-                        <div class="price-flip">
-                            <div class="price-inner">
-                                <div class="price-front">
-                                    <span>₹6000</span>
-                                </div>
-                                <div class="price-back">
-                                    <a href="{% url 'Bookingpage' %}" class="btn flip-btn">Book Now</a>
+                            </p>
+                            <div class="price-flip">
+                                <div class="price-inner">
+                                    <div class="price-front">
+                                        <span>₹6000</span>
+                                    </div>
+                                    <div class="price-back">
+                                        <a href="{% url 'Bookingpage' %}" class="btn flip-btn">Book Now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm h-100" style="border:none; background-color: rgba(255, 255, 255, 0.265);">
-                    <img src="{% static 'website/images/service1.jpg' %}" class="card-img-top"
-                        alt="6 Month Pottery Pro Course" style="border-radius:8px; height:300px; object-fit:cover;">
-                    <div class="card-body text-center">
-                        <h3 style="color:rgb(14,59,36); font-weight:bold;">6 Month Pro Journey</h3>
-                        <p style="color:rgb(21, 71, 44); font-size: 18px;"><i>A professional-level program to master
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm h-100"
+                         style="border:none; background-color: rgba(255, 255, 255, 0.265);">
+                        <img src="{% static 'website/images/service1.jpg' %}" class="card-img-top"
+                             alt="6 Month Pottery Pro Course"
+                             style="border-radius:8px; height:300px; object-fit:cover;">
+                        <div class="card-body text-center">
+                            <h3 style="color:rgb(14,59,36); font-weight:bold;">6 Month Pro Journey</h3>
+                            <p style="color:rgb(21, 71, 44); font-size: 18px;"><i>A professional-level program to master
                                 advanced wheel throwing, glazing artistry, and build your own pottery portfolio.</i>
-                        </p>
-                        <div class="price-flip">
-                            <div class="price-inner">
-                                <div class="price-front">
-                                    <span>₹25000</span>
-                                </div>
-                                <div class="price-back">
-                                    <a href="{% url 'Bookingpage' %}" class="btn flip-btn">Book Now</a>
+                            </p>
+                            <div class="price-flip">
+                                <div class="price-inner">
+                                    <div class="price-front">
+                                        <span>₹25000</span>
+                                    </div>
+                                    <div class="price-back">
+                                        <a href="{% url 'Bookingpage' %}" class="btn flip-btn">Book Now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </div>
-    </div>
 
-    <!-- Footer Start -->
-    <div class="container-fluid text-light footer py-5" style="background-color: rgb(35, 50, 37);"
-      data-wow-delay="0.1s">
-      <div class="container text-center py-5">
+<!-- Footer Start -->
+<div class="container-fluid text-light footer py-5" style="background-color: rgb(35, 50, 37);"
+     data-wow-delay="0.1s">
+    <div class="container text-center py-5">
         <!-- Brand Title -->
         <a href="{% url 'Homepage' %}">
-          <h1 class="display-4 mb-3 text-uppercase" style="color: rgb(84, 144, 92); font-weight: 800;">
-            <i class="fa-solid fa-mug-hot me-2"></i>Poterie
-          </h1>
+            <h1 class="display-4 mb-3 text-uppercase" style="color: rgb(84, 144, 92); font-weight: 800;">
+                <i class="fa-solid fa-mug-hot me-2"></i>Poterie
+            </h1>
         </a>
 
         <!-- Social Media Links -->
-                <div class="d-flex justify-content-center flex-wrap mb-4">
+        <div class="d-flex justify-content-center flex-wrap mb-4">
             <a href="{% url 'Homepage' %}" class="text-light mx-3" style="text-decoration: none;">About Us</a>
-            <a href="{% url 'Workshoppage' %}"  class="text-light mx-3" style="text-decoration: none;">Workshops</a>
-            <a href="{% url 'Creationpage' %}"  class="text-light mx-3" style="text-decoration: none;">Shop</a>
-            <a href="{% url 'Contactpage' %}"  class="text-light mx-3" style="text-decoration: none;">Contact</a>
+            <a href="{% url 'Workshoppage' %}" class="text-light mx-3" style="text-decoration: none;">Workshops</a>
+            <a href="{% url 'Creationpage' %}" class="text-light mx-3" style="text-decoration: none;">Shop</a>
+            <a href="{% url 'Contactpage' %}" class="text-light mx-3" style="text-decoration: none;">Contact</a>
         </div>
 
 
         <!-- Footer Text -->
         <p class="mb-3" style="font-size: 15px;">
-          Handcrafted pottery, ceramic art, and creative workshops that bring clay to life.<br>
-          Join our <strong>Pottery Classes</strong> or browse unique handmade <strong>Poterie Creations</strong>.
+            Handcrafted pottery, ceramic art, and creative workshops that bring clay to life.<br>
+            Join our <strong>Pottery Classes</strong> or browse unique handmade <strong>Poterie Creations</strong>.
         </p>
 
         <!-- Links -->
         <div class="d-flex justify-content-center flex-wrap mb-4">
-          <a href="#!" class="text-light mx-3" style="text-decoration: none;">About Us</a>
-          <a href="#!" class="text-light mx-3" style="text-decoration: none;">Workshops</a>
-          <a href="#!" class="text-light mx-3" style="text-decoration: none;">Shop</a>
-          <a href="#!" class="text-light mx-3" style="text-decoration: none;">Contact</a>
-          <a href="#!" class="text-light mx-3" style="text-decoration: none;">FAQs</a>
+            <a href="#!" class="text-light mx-3" style="text-decoration: none;">About Us</a>
+            <a href="#!" class="text-light mx-3" style="text-decoration: none;">Workshops</a>
+            <a href="#!" class="text-light mx-3" style="text-decoration: none;">Shop</a>
+            <a href="#!" class="text-light mx-3" style="text-decoration: none;">Contact</a>
+            <a href="#!" class="text-light mx-3" style="text-decoration: none;">FAQs</a>
         </div>
 
         <!-- Copyright -->
         <p class="mb-0" style="font-size: 14px;">
-          &copy; <span style="color: rgb(84, 144, 92); font-weight: 600;">Poterie</span>. All Rights Reserved.
+            &copy; <span style="color: rgb(84, 144, 92); font-weight: 600;">Poterie</span>. All Rights Reserved.
         </p>
         <p class="mb-0" style="font-size: 13px; opacity: 0.7;">
-          Designed with <i class="fa-solid fa-heart" style="color: rgb(84, 144, 92);"></i> by <a href="#"
-            style="color: rgb(84, 144, 92); text-decoration: none;">Aleena Joseph</a>.
+            Designed with <i class="fa-solid fa-heart" style="color: rgb(84, 144, 92);"></i> by <a href="#"
+                                                                                                   style="color: rgb(84, 144, 92); text-decoration: none;">Aleena
+            Joseph</a>.
         </p>
-      </div>
     </div>
-    <!-- Footer End -->
+</div>
+<!-- Footer End -->
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-outline-primary border-2 btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+<!-- Back to Top -->
+<a href="#" class="btn btn-outline-primary border-2 btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'website/lib/wow/wow.min.js' %}"></script>
-    <script src="{% static 'website/lib/easing/easing.min.js' %}"></script>
-    <script src="{% static 'website/lib/waypoints/waypoints.min.js' %}"></script>
-    <script src="{% static 'website/lib/owlcarousel/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'website/lib/lightbox/js/lightbox.min.js' %}"></script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'website/lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'website/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'website/lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'website/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'website/lib/lightbox/js/lightbox.min.js' %}"></script>
 
-    <!-- Template Javascript -->
-    <script src="{% static 'website/js/main.js' %}"></script>
-      <style>
+<!-- Template Javascript -->
+<script src="{% static 'website/js/main.js' %}"></script>
+<style>
 
     .price-flip {
         width: 120px;
