@@ -154,13 +154,13 @@
 
                 <form>
                     <input type="number" min="1" max="10" class="form-control mb-3 mt-3" style="width:175px;"
-                           placeholder="quantity" value="1" name="singlepottery_quantity">
+                           placeholder="quantity" value="0" name="singlepottery_quantity" id="singlepottery_quantity">
                     <input type="text" class="form-control mb-3 mt-3" style="width:175px;" placeholder="Rs "
-                           name="singlepottery_total">
+                           name="singlepottery_total" id="singlepottery_total">
                     <input type="hidden" class="form-control mb-3 mt-3" placeholder="Product Name"
                            name="singlepottery_name" value="{{pottery.Pottery_name}}">
                     <input type="hidden" class="form-control mb-3 mt-3" placeholder="Price" name="singlepottery_price"
-                           value="{{pottery.Pottery_price}}">
+                           value="{{pottery.Pottery_price}}" id="singlepottery_price">
                     <input type="hidden" class="form-control mb-3 mt-3" placeholder="Username"
                            name="singlepottery_username" value="{{request.session.username}}">
                     {% if request.session.username %}
@@ -254,6 +254,21 @@
 
 <!-- Template Javascript -->
 <script src="{% static 'website/js/main.js' %}"></script>
+
+<script src="{% static 'js/jquery-3.7.1.min' %}"></script>
+
+<script>
+    $(document).ready(function(){
+    $("#singlepottery_quantity").change(function(){
+    let singlepotteryquantity=document.getElementById("singlepottery_quantity").value;
+    let singlepotteryprice=document.getElementById("singlepottery_price"),value;
+    let result=singlepotteryquantity*singlepotteryprice;
+
+
+    document.getElementById("singlepottery_total").value=result;
+    })
+    })
+</script>
 <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
