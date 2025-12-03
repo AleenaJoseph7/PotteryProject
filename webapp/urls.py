@@ -21,4 +21,7 @@ urlpatterns = [
     path('saveusersignup/', views.saveusersignup, name="saveusersignup"),
     path('login/', views.login, name="login"),
     path('logout/', views.logout, name="logout"),
+
+    path('Signupdisplay/', views.Signupdisplay, name="Signupdisplay"),
+    path('Deletesignup/<int:s_id>/', views.Deletesignup, name="Deletesignup"),
 ]

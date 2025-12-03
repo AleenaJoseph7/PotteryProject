@@ -106,6 +106,15 @@ def Checkoutpage(request):
 def usersignup(request):
     return render(request, "Usersignup.html")
 
+def Signupdisplay(request):
+    data=Signupdb.objects.all()
+    return render(request,"signupdisplay.html",{'data':data})
+
+def Deletesignup(request,s_id):
+    data=Signupdb.objects.filter(id=s_id)
+    data.delete()
+    return redirect(Signupdisplay)
+
 
 def userlogin(request):
     return render(request, "Userlogin.html")
