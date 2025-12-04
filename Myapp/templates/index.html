@@ -231,6 +231,7 @@
                   <img src="{% static 'adminsite/assets/images/profile/user-1.jpg' %}" alt="" width="35" height="35"
                     class="rounded-circle">
                 </a>
+
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
@@ -245,7 +246,12 @@
                       <i class="ti ti-list-check fs-6"></i>
                       <p class="mb-0 fs-3">My Task</p>
                     </a>
+                      {% if request.session.username %}
                     <a href="{% url 'AdminLogout' %}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                      {% else %}
+                    <a href="{% url 'AdminLoginPage' %}" class="btn btn-outline-primary mx-3 mt-2 d-block">Login</a>
+                      {% endif %}
+
                   </div>
                 </div>
               </li>
@@ -342,6 +348,25 @@
   <script src="{% static 'adminsite/assets/js/dashboard.js' %}"></script>
   <!-- solar icons -->
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+    {% for i in messages %}
+        {% if 'success' in i.tags %}
+            <script> swal('{{i}}', '', 'success'); </script>
+
+        {% elif 'warning' in i.tags %}
+            <script> swal('{{i}}', '', 'warning'); </script>
+
+        {% elif 'info' in i.tags %}
+            <script> swal('{{i}}', '', 'info'); </script>
+
+        {% elif 'error' in i.tags %}
+            <script> swal('{{i}}', '', 'error'); </script>
+
+        {% endif %}
+    {% endfor %}
+{% endif %}
 </body>
 
 </html>
