@@ -7,6 +7,8 @@ from Myapp.models import catergorydb,productdb,potterydb
 from webapp.models import Orderdb,Bookingdb
 import  datetime
 
+from django.contrib import messages
+
 
 # Create your views here.
 def indexpage(request):
@@ -32,6 +34,7 @@ def savecatergory(request):
         duration=request.POST.get('duration')
         ob=catergorydb(Duration=duration)
         ob.save()
+        messages.success(request,"Catergory Saved Succesfully!")
         return redirect(catergory)
 
 def displaycatergory(request):
@@ -49,11 +52,13 @@ def updatecatergory(request,c_id):
         duration = request.POST.get('duration')
 
         catergorydb.objects.filter(id=c_id).update(Duration=duration)
+        messages.success(request,"Catergory updated Succesfully!")
         return redirect(displaycatergory)
 
 def deletecatergory(request,c_id):
     data=catergorydb.objects.filter(id=c_id)
     data.delete()
+    messages.warning(request, "Catergory Deleted Succesfully!")
     return redirect(displaycatergory)
 
 
@@ -66,6 +71,7 @@ def saveproduct(request):
         product_name=request.POST.get('product_name')
         ob=productdb(Product_name=product_name)
         ob.save()
+        messages.success(request,"Product Saved Succesfully!")
         return redirect(product)
 
 def displayproduct(request):
@@ -83,11 +89,13 @@ def updateproduct(request,w_id):
         product_name = request.POST.get('product_name')
 
         productdb.objects.filter(id=w_id).update(Product_name=product_name)
+        messages.success(request,"Product Updated Succesfully!")
         return redirect(displayproduct)
 
 def deleteproduct(request,w_id):
     data=productdb.objects.filter(id=w_id)
     data.delete()
+    messages.warning(request, "Product Deleted Succesfully!")
     return redirect(displayproduct)
 
 
@@ -111,6 +119,7 @@ def savepottery(request):
                      Pottery_image=pottery_image)
 
         ob.save()
+        messages.success(request,"Pottery Saved Succesfully!")
         return redirect(addpottery)
 
 def displaypottery(request):
@@ -142,11 +151,13 @@ def updatepottery(request,p_id):
                        Pottery_price=pottery_price,
                        Pottery_description=pottery_description,
                        Pottery_image=files)
+        messages.success(request,"Pottery Updated Succesfully!")
         return redirect(displaypottery)
 
 def deletepottery(request,p_id):
     data=potterydb.objects.filter(id=p_id)
     data.delete()
+    messages.warning(request, "Pottery Deleted Succesfully!")
     return redirect(displaypottery)
 
 def displayorder(request):
@@ -157,6 +168,7 @@ def displayorder(request):
 def deleteorder(request,o_id):
     data=Orderdb.objects.filter(id=o_id)
     data.delete()
+    messages.warning(request, "Order Deleted Succesfully!")
     return redirect(displayorder)
 
 def displaybooking(request):
@@ -167,6 +179,7 @@ def displaybooking(request):
 def deletebooking(request,b_id):
     data=Bookingdb.objects.filter(id=b_id)
     data.delete()
+    messages.warning(request, "Booking Deleted Succesfully!")
     return redirect(displaybooking)
 
 
@@ -186,13 +199,17 @@ def adminlogin(request):
                 login(request,data)
                 request.session['username']=username
                 request.session['password']=password
+                messages.success(request, "Login Succesfully!")
                 return redirect(indexpage)
             else:
+                messages.warning(request, "Username or password Incorrect!")
                 return redirect(adminloginpage)
         else:
+            messages.warning(request, "Username or password Incorrect!")
             return redirect(adminloginpage)
 
 def adminlogout(request):
     del request.session['username']
     del request.session['password']
+    messages.success(request, "Logout Succesfully!")
     return redirect(adminloginpage)
