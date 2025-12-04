@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from Myapp.models import productdb, potterydb, catergorydb
 from webapp.models import Signupdb, Bookingdb, Orderdb
+from django.contrib import messages
 
 
 # Create your views here.
@@ -77,6 +78,7 @@ def savebooking(request):
                        Booking_class=book_class)
 
         ob.save()
+        messages.success(request,"Booked Successfully!")
         return redirect(Bookingpage)
 
 
@@ -95,6 +97,7 @@ def saveorder(request):
                      Order_payment=payment)
 
         ob.save()
+        messages.success(request,"Order Placed Successfully!")
         return redirect(Orderpage)
 
 
@@ -135,13 +138,17 @@ def saveusersignup(request):
                       Signup_confirm=signup_confirm)
 
         if Signupdb.objects.filter(Signup_username=signup_username).exists():
+            messages.warning(request, "Username already exists!")
             return redirect(usersignup)
         elif Signupdb.objects.filter(Signup_email=signup_email).exists():
+            messages.warning(request, "Email already exists!")
             return redirect(usersignup)
         elif Signupdb.objects.filter(Signup_mobile=signup_mobile).exists():
+            messages.warning(request, "Mobile Number already exists!")
             return redirect(usersignup)
         else:
             ob.save()
+            messages.success(request, "Signup Successfully!")
             return redirect(userlogin)
 
 
@@ -153,14 +160,18 @@ def login(request):
         if Signupdb.objects.filter(Signup_username=login_username, Signup_password=login_password).exists():
             request.session['username'] = login_username
             request.session['password'] = login_password
+            messages.success(request, "Login Successfully!")
             return redirect(Homepage)
         else:
+            messages.warning(request, "Incorrect username or password!")
             return redirect(userlogin)
     else:
+        messages.warning(request, "Try Again!")
         return redirect(userlogin)
 
 
 def logout(request):
     del request.session['username']
     del request.session['password']
+    messages.success(request, "Logout Successfully!")
     return redirect(userlogin)
