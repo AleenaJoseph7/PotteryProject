@@ -151,7 +151,7 @@
                     Rs. <span style="font-size:18px;">{{pottery.Pottery_price}}</span>
                 </div>
                 </p>
-
+                {% if request.session.username %}
                 <form>
                     <input type="number" min="1" max="10" class="form-control mb-3 mt-3" style="width:175px;"
                            placeholder="quantity" value="0" name="singlepottery_quantity" id="singlepottery_quantity">
@@ -163,7 +163,7 @@
                            value="{{pottery.Pottery_price}}" id="singlepottery_price">
                     <input type="hidden" class="form-control mb-3 mt-3" placeholder="Username"
                            name="singlepottery_username" value="{{request.session.username}}">
-                    {% if request.session.username %}
+
                     <div style="display:flex; justify-content:justify; gap:25px;" class="mb-5 ">
                         <a href="{% url 'Cartpage' %}" class="btn btn-outline-primary btn-sm"
                            style="border-radius:8px; width:150px; height:40px; font-size:18px;">Add to Cart</a>
