@@ -16,6 +16,9 @@ urlpatterns = [
     path('savebooking/', views.savebooking, name="savebooking"),
     path('Checkoutpage/', views.Checkoutpage, name="Checkoutpage"),
 
+    path('savecart/',views.savecart,name="savecart"),
+    path('deletecart/<int:c_id>/',views.deletecart,name="deletecart"),
+
     path('userlogin/', views.userlogin, name="userlogin"),
     path('usersignup/', views.usersignup, name="usersignup"),
     path('saveusersignup/', views.saveusersignup, name="saveusersignup"),

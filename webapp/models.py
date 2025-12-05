@@ -38,6 +38,7 @@ class Cartdb(models.Model):
     Singlepottery_total = models.IntegerField(null=True, blank=True)
     Singlepottery_quantity = models.CharField(max_length=30, null=True, blank=True)
     Singlepottery_image = models.ImageField(upload_to="Cart Images", null=True, blank=True)
+    Potteryid=models.IntegerField(null=True,blank=True)
 
     def __str__(self):
         return self.Singlepottery_name

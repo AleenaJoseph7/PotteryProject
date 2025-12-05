@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from Myapp.models import productdb, potterydb, catergorydb
-from webapp.models import Signupdb, Bookingdb, Orderdb
+from webapp.models import Signupdb, Bookingdb, Orderdb,Cartdb
 from django.contrib import messages
 
 
@@ -42,7 +42,8 @@ def Orderpage(request):
 
 def Cartpage(request):
     product = productdb.objects.all()
-    return render(request, "Cartpage.html", {'product': product})
+    cart=Cartdb.objects.all()
+    return render(request, "Cartpage.html", {'product': product,'cart':cart})
 
 
 def Categorypage(request, product_name):
@@ -99,6 +100,32 @@ def saveorder(request):
         ob.save()
         messages.success(request,"Order Placed Successfully!")
         return redirect(Orderpage)
+
+def savecart(request):
+    if request.method=='POST':
+        singlepottery_quantity=request.POST.get('singlepottery_quantity')
+        singlepottery_price=request.POST.get('singlepottery_price')
+        singlepottery_total=request.POST.get('singlepottery_total')
+        singlepottery_name=request.POST.get('singlepottery_name')
+        singlepottery_username=request.POST.get('singlepottery_username')
+        pottery=potterydb.objects.filter(Pottery_name=singlepottery_name).first()
+        singlepottery_image=pottery.Pottery_image
+        potteryid=pottery.id
+
+        ob=Cartdb(Singlepottery_username=singlepottery_username,
+                  Singlepottery_name=singlepottery_name,
+                  Singlepottery_price=singlepottery_price,
+                  Singlepottery_total=singlepottery_total,
+                  Singlepottery_quantity=singlepottery_quantity,
+                  Singlepottery_image=singlepottery_image,
+                  Potteryid=potteryid)
+        ob.save()
+        messages.success(request,"Added To Cart!")
+        return redirect(Homepage)
+
+def deletecart(request,c_id):
+    data=Cartdb.objects.filter(id=c_id).delete()
+    return redirect(Cartpage)
 
 
 def Checkoutpage(request):

@@ -142,19 +142,30 @@
 
                     <div class="table-responsive">
                         <table class="table table-bordered align-middle mb-0">
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>Options</th>
+                            </tr>
+                            </thead>
                             <tbody>
                             {% for i in cart %}
                             <tr class="text-center">
                                 <td>
                                     <img src="{{ item.Singlepottery_image.url }}" alt="Product Image" width="150px"
-                                         height="150px" class="rounded-circle">
+                                         height="150px" >
                                 </td>
                                 <td><strong>{{i.Singlepottery_name}}</strong></td>
                                 <td>₹{{i.Singlepottery_price}}</td>
                                 <td>{{i.Singlepottery_quantity}}</td>
                                 <td>₹{{i.Singlepottery_total}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-outline-danger "> Remove </a>
+                                    <a href="{% url 'Singleproductpage' pottery_id=i.Potteryid %}" class="btn btn-outline-success "> Edit </a>
+                                    <a href="{% url 'deletecart' c_id=i.id %}" class="btn btn-outline-danger "> Remove </a>
                                 </td>
                             </tr>
                             {% empty %}
