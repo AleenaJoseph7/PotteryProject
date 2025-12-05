@@ -156,8 +156,8 @@
                             {% for i in cart %}
                             <tr class="text-center">
                                 <td>
-                                    <img src="{{ item.Singlepottery_image.url }}" alt="Product Image" width="150px"
-                                         height="150px" >
+                                    <img src="{{ i.Singlepottery_image.url }}" alt="Product Image" width="250px"
+                                         height="250px" class="rounded-circle" >
                                 </td>
                                 <td><strong>{{i.Singlepottery_name}}</strong></td>
                                 <td>₹{{i.Singlepottery_price}}</td>
