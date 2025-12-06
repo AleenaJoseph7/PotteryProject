@@ -42,3 +42,14 @@ class Cartdb(models.Model):
 
     def __str__(self):
         return self.Singlepottery_name
+
+class Checkoutdb(models.Model):
+    Fullame=models.CharField(max_length=30,null=True,blank=True)
+    Email=models.EmailField(max_length=30,null=True,blank=True)
+    Address=models.CharField(max_length=30,null=True,blank=True)
+    City=models.CharField(max_length=30,null=True,blank=True)
+    Pincode=models.CharField(max_length=30,null=True,blank=True)
+    Total_amount=models.CharField(max_length=30,null=True,blank=True)
+
+    def __str__(self):
+        return self.Name

@@ -134,12 +134,12 @@
                 <div class="card border-0 shadow-sm p-4" style="border-radius:10px;">
                     <h4 class="fw-bold mb-4" style="color:#4a6b50;">Shipping Details</h4>
 
-                    <form method="POST" action="{% url 'Orderpage' %}">
+                    <form method="POST" action="{% url 'savecheckout' %}">
                         {% csrf_token %}
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Full Name</label>
-                                <input type="text" name="name" class="form-control" required>
+                                <input type="text" name="fullname" class="form-control" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Email</label>
@@ -389,6 +389,27 @@
       padding: 40px 0;
     }
 </style>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+    {% for i in messages %}
+        {% if 'success' in i.tags %}
+            <script> swal('{{i}}', '', 'success'); </script>
+
+        {% elif 'warning' in i.tags %}
+            <script> swal('{{i}}', '', 'warning'); </script>
+
+        {% elif 'info' in i.tags %}
+            <script> swal('{{i}}', '', 'info'); </script>
+
+        {% elif 'error' in i.tags %}
+            <script> swal('{{i}}', '', 'error'); </script>
+
+        {% endif %}
+    {% endfor %}
+{% endif %}
 
 </body>
 
