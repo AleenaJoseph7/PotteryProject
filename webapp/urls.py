@@ -14,7 +14,9 @@ urlpatterns = [
     path('Singleproductpage/<int:pottery_id>/', views.Singleproductpage, name="Singleproductpage"),
     path('saveorder/', views.saveorder, name="saveorder"),
     path('savebooking/', views.savebooking, name="savebooking"),
+
     path('Checkoutpage/', views.Checkoutpage, name="Checkoutpage"),
+    path('savecheckout/', views.savecheckout, name="savecheckout"),
 
     path('savecart/',views.savecart,name="savecart"),
     path('deletecart/<int:c_id>/',views.deletecart,name="deletecart"),
