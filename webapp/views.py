@@ -158,6 +158,11 @@ def Checkoutpage(request):
                                                  'discount': discount
                                                  })
 
+def PaymentPage(request):
+    product=productdb.objects.all()
+    cart_count=Cartdb.objects.filter(Singlepottery_username=request.session['username']).count()
+    return render(request,"Paymentpage.html",{'product':product,
+                                              'cart_count':cart_count,})
 
 def savebooking(request):
     if request.method == 'POST':
