@@ -174,14 +174,14 @@ def PaymentPage(request):
             delivery = 50
         else:
             delivery = 0
-        gst = round(subtotal * 0.05)
-        discount = round(subtotal * 0.10)
-        totalprice = (subtotal + gst + delivery) - discount
+    gst = round(subtotal * 0.05)
+    discount = round(subtotal * 0.10)
+    totalprice = (subtotal + gst + delivery) - discount
 
         # address fetch
-        checkout_address = Checkoutdb.objects.filter(Checkout_Username=request.session['username']).first()
-        cart_count = Cartdb.objects.filter(Singlepottery_username=request.session['username']).count()
-        return render(request, "Paymentpage.html", {'product': product,
+    checkout_address = Checkoutdb.objects.filter(Checkout_Username=request.session['username']).first()
+    cart_count = Cartdb.objects.filter(Singlepottery_username=request.session['username']).count()
+    return render(request, "Paymentpage.html", {'product': product,
                                                     'cart_count': cart_count,
                                                     'subtotal': subtotal,
                                                     'discount': discount,
