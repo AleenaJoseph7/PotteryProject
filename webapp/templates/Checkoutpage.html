@@ -163,15 +163,11 @@
                             </div>
                         </div>
 
-                        <div class="mb-4">
-                            <label class="form-label fw-semibold">Payment Method</label>
-                            <select class="form-select" name="payment_method" required>
-                                <option value="">Select</option>
-                                <option value="COD">Cash on Delivery</option>
-                                <option value="UPI">UPI</option>
-                                <option value="Card">Credit/Debit Card</option>
-                            </select>
+                        <div class="mb-3" hidden>
+                            <label class="form-label fw-semibold">Total Amount</label>
+                            <input name="total_amount" class="form-control" type="text" required value="{{total_amount}}">
                         </div>
+
 
                         <a href="{% url 'Orderpage' %}" type="submit" class="btn w-100 py-2"
                            style="background-color:#4a6b50; color:#fff; font-weight:600;">Place Order</a>
@@ -181,57 +177,46 @@
 
             <!-- Order Summary -->
             <div class="col-lg-5">
-                <div class="card border-0 shadow-sm p-4" style="border-radius:10px;">
-                    <h4 class="fw-bold mb-4" style="color:#4a6b50;">Order Summary</h4>
+                            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-4 text-uppercase" style="color:#4a6b50;">Receipt</h5>
 
-                    <div class="table-responsive">
-                        <table class="table table-striped align-middle">
-                            <thead style="background:#e8efe9;">
-                            <tr>
-                                <th>Product</th>
-                                <th>Qty</th>
-                                <th>Price</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for item in cart_items %}
-                            <tr>
-                                <td>{{ item.Singlepottery_name }}</td>
-                                <td>{{ item.Singlepottery_quantity }}</td>
-                                <td>₹{{ item.Singlepottery_total }}</td>
-                            </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+
+                    <div class="row mb-2">
+                        <div class="col-6">Sub Total</div>
+                        <div class="col-6 text-end fw-semibold">
+                            Rs. {{sub_total}}
+                        </div>
+                    </div>
+
+                    <!-- Delivery -->
+                    <div class="row mb-2">
+                        <div class="col-6">Delivery Charges</div>
+                         <div class="col-6 text-end fw-semibold">Rs. {{delivery}}</div>
+                    </div>
+
+                    <!-- GST -->
+                    <div class="row mb-2">
+                        <div class="col-6">GST (5%)</div>
+                        <div class="col-6 text-end fw-semibold">Rs. {{gst}}</div>
+                    </div>
+
+                    <!-- Discount -->
+                    <div class="row mb-2">
+                        <div class="col-6">Discount</div>
+                        <div class="col-6 text-end text-success fw-semibold">Rs. {{discount}}</div>
                     </div>
 
                     <hr>
 
-                    <div class="d-flex justify-content-between mb-2">
-                        <span>Subtotal</span>
-                        <span>Rs. 5500</span>
-                    </div>
-
-                    <div class="d-flex justify-content-between mb-2">
-                        <span>Delivery Charge</span>
-                        <span class="text-success">Free</span>
-                    </div>
-
-                    <div class="d-flex justify-content-between mb-2">
-                        <span>GST (5%)</span>
-                        <span>Rs. 250</span>
-                    </div>
-
-                    <hr>
-                    <div class="d-flex justify-content-between fw-bold fs-5">
-                        <span>Total</span>
-                        <span style="color:#4a6b50;">Rs. 5650</span>
-                    </div>
-
-                    <div class="mt-4 text-center">
-                        <a href="{% url 'Cartpage' %}" class="btn btn-outline-success w-100">Back to Cart</a>
+                    <!-- Final Total -->
+                    <div class="row total-price mb-3">
+                        <div class="col-6 fw-bold">Total Amount</div>
+                        <div class="col-6 text-end fw-bold text-dark">Rs. {{total_amount}}</div>
                     </div>
                 </div>
+            </div>
+
             </div>
         </div>
     </div>
