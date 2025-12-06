@@ -6,57 +6,105 @@ from django.contrib import messages
 
 # Create your views here.
 def Homepage(request):
+    cart_count=0
+    uname=request.session.get('username')
+    if uname:
+        cart_count=Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
-    return render(request, "Homepage.html", {'product': product})
+    return render(request, "Homepage.html", {'product': product,'cart_count':cart_count})
 
 
 def Contactpage(request):
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
-    return render(request, "Contactpage.html", {'product': product})
+    return render(request, "Contactpage.html", {'product': product,'cart_count':cart_count})
 
 
 def Bookingpage(request):
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
     duration = catergorydb.objects.all()
-    return render(request, "Bookingpage.html", {'product': product, 'duration': duration})
+    return render(request, "Bookingpage.html", {'product': product, 'duration': duration,'cart_count':cart_count})
 
 def Legacygpage(request):
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
-    return render(request, "Legacypage.html", {'product': product})
+    return render(request, "Legacypage.html", {'product': product,'cart_count':cart_count})
 
 
 def Workshoppage(request):
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
-    return render(request, "Workshoppage.html", {'product': product})
+    return render(request, "Workshoppage.html", {'product': product,'cart_count':cart_count})
 
 
 def Creationpage(request):
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
-    return render(request, "Creationpage.html", {'product': product})
+    return render(request, "Creationpage.html", {'product': product,'cart_count':cart_count})
 
 
 def Orderpage(request):
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
-    return render(request, "Orderpage.html", {'product': product})
+    return render(request, "Orderpage.html", {'product': product,'cart_count':cart_count})
 
 
 def Cartpage(request):
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
-    cart=Cartdb.objects.all()
-    return render(request, "Cartpage.html", {'product': product,'cart':cart})
+    cart=Cartdb.objects.filter(Singlepottery_username=request.session['username'])
+    return render(request, "Cartpage.html", {'product': product,'cart':cart,'cart_count':cart_count})
 
 
 def Categorypage(request, product_name):
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
     pottery = potterydb.objects.filter(Pottery_category=product_name)
-    return render(request, "Categorypage.html.", {'product': product, 'pottery': pottery, 'product_name': product_name})
+    return render(request, "Categorypage.html.", {'product': product, 'pottery': pottery, 'product_name': product_name,'cart_count':cart_count})
 
 
 def Singleproductpage(request, pottery_id):
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     pottery = potterydb.objects.get(id=pottery_id)
     product = productdb.objects.all()
-    return render(request, "singleproduct.html", {'pottery': pottery, 'product': product})
+    return render(request, "singleproduct.html", {'pottery': pottery, 'product': product,'cart_count':cart_count})
 
+
+def Checkoutpage(request):
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
+    product = productdb.objects.all()
+    return render(request, "Checkoutpage.html", {'product': product,'cart_count':cart_count})
 
 def savebooking(request):
     if request.method == 'POST':
@@ -126,11 +174,6 @@ def savecart(request):
 def deletecart(request,c_id):
     data=Cartdb.objects.filter(id=c_id).delete()
     return redirect(Cartpage)
-
-
-def Checkoutpage(request):
-    product = productdb.objects.all()
-    return render(request, "Checkoutpage.html", {'product': product})
 
 
 def usersignup(request):
