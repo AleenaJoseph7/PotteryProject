@@ -75,7 +75,33 @@ def Cartpage(request):
         cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
     cart=Cartdb.objects.filter(Singlepottery_username=request.session['username'])
-    return render(request, "Cartpage.html", {'product': product,'cart':cart,'cart_count':cart_count})
+
+    # receipt calculation
+    sub_total=0
+    total_amount=0
+    delivery=0
+    gst=0
+    discount=0
+
+    for i in cart:
+        sub_total+=i.Singlepottery_total
+        if sub_total<500:
+            delivery=50
+        else:
+            delivery=0
+        gst=round((sub_total+delivery)*0.05)
+        discount=round((sub_total*0.10))
+        total_amount=round((gst+sub_total+delivery)-discount)
+
+
+    return render(request, "Cartpage.html", {'product': product,
+                                             'cart':cart,
+                                             'cart_count':cart_count,
+                                             'sub_total':sub_total,
+                                             'delivery':delivery,
+                                             'gst':gst,
+                                             'total_amount':total_amount,
+                                             'discount':discount})
 
 
 def Categorypage(request, product_name):

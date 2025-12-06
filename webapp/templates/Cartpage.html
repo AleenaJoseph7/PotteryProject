@@ -191,40 +191,40 @@
                     <!-- Items Info -->
                     <div class="row mb-2">
                         <div class="col-6">Items</div>
-                        <div class="col-6 text-end fw-semibold">10</div>
+                        <div class="col-6 text-end fw-semibold">{{cart_count}}</div>
                     </div>
 
                     <div class="row mb-2">
-                        <div class="col-6">Total Price</div>
+                        <div class="col-6">Sub Total</div>
                         <div class="col-6 text-end fw-semibold">
-                            Rs. 5500
+                            Rs. {{sub_total}}
                         </div>
                     </div>
 
                     <!-- Delivery -->
                     <div class="row mb-2">
                         <div class="col-6">Delivery Charges</div>
-                        Rs. 100
+                         <div class="col-6 text-end fw-semibold">Rs. {{delivery}}</div>
                     </div>
 
                     <!-- GST -->
                     <div class="row mb-2">
                         <div class="col-6">GST (5%)</div>
-                        <div class="col-6 text-end fw-semibold">Rs. 250</div>
+                        <div class="col-6 text-end fw-semibold">Rs. {{gst}}</div>
                     </div>
 
                     <!-- Discount -->
                     <div class="row mb-2">
                         <div class="col-6">Discount</div>
-                        <div class="col-6 text-end text-success fw-semibold">Rs. 200</div>
+                        <div class="col-6 text-end text-success fw-semibold">Rs. {{discount}}</div>
                     </div>
 
                     <hr>
 
                     <!-- Final Total -->
                     <div class="row total-price mb-3">
-                        <div class="col-6 fw-bold">Final Amount</div>
-                        <div class="col-6 text-end fw-bold text-dark">Rs. 5650</div>
+                        <div class="col-6 fw-bold">Total Amount</div>
+                        <div class="col-6 text-end fw-bold text-dark">Rs. {{total_amount}}</div>
                     </div>
 
                     <p class="text-muted small mb-3 text-center">Inclusive of all taxes and charges</p>
