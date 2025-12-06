@@ -158,11 +158,39 @@ def Checkoutpage(request):
                                                  'discount': discount
                                                  })
 
+
 def PaymentPage(request):
-    product=productdb.objects.all()
-    cart_count=Cartdb.objects.filter(Singlepottery_username=request.session['username']).count()
-    return render(request,"Paymentpage.html",{'product':product,
-                                              'cart_count':cart_count,})
+    product = productdb.objects.all()
+    cart = Cartdb.objects.filter(Singlepottery_username=request.session['username'])
+    # receipt calculatio
+    subtotal = 0
+    totalprice = 0
+    discount = 0
+    gst = 0
+    delivery = 0
+    for i in cart:
+        subtotal += i.Singlepottery_total
+        if subtotal < 500:
+            delivery = 50
+        else:
+            delivery = 0
+        gst = round(subtotal * 0.05)
+        discount = round(subtotal * 0.10)
+        totalprice = (subtotal + gst + delivery) - discount
+
+        # address fetch
+        checkout_address = Checkoutdb.objects.filter(Checkout_Username=request.session['username']).first()
+        cart_count = Cartdb.objects.filter(Singlepottery_username=request.session['username']).count()
+        return render(request, "Paymentpage.html", {'product': product,
+                                                    'cart_count': cart_count,
+                                                    'subtotal': subtotal,
+                                                    'discount': discount,
+                                                    'delivery': delivery,
+                                                    'totalprice': totalprice,
+                                                    'gst': gst,
+                                                    'checkout_address': checkout_address
+                                                    })
+
 
 def savebooking(request):
     if request.method == 'POST':
@@ -244,16 +272,28 @@ def savecheckout(request):
         city = request.POST.get('city')
         pincode = request.POST.get('pincode')
         total_amount = request.POST.get('total_amount')
+        c_username = request.POST.get('c_username')
 
         ob = Checkoutdb(Fullame=fullname,
                         Email=email,
                         City=city,
                         Address=address,
                         Pincode=pincode,
-                        Total_amount=total_amount)
+                        Total_amount=total_amount,
+                        Checkout_Username=c_username)
         ob.save()
         messages.success(request, "Checkout Successfully!")
-        return redirect(Checkoutpage)
+        return redirect(PaymentPage)
+
+
+def editcheckout(request):
+    data = Checkoutdb.objects.all()
+    return render(request, "checkoutdisplay.html", {'data': data})
+
+
+def deletecheckout(request, d_id):
+    data = Checkoutdb.objects.filter(id=d_id).delete()
+    return redirect(editcheckout)
 
 
 def usersignup(request):

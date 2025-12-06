@@ -127,7 +127,83 @@
 
 <div class="container-fluid main_wrapper" style="margin-top:124px; padding:20px 50px;">
 
-    <div class="container py-5">
+    <div class="container mt-5 mb-5">
+
+        <h2 class="text-center fw-bold mb-4">Payment Summary</h2>
+
+        <div class="row justify-content-center">
+
+            <!-- LEFT: RECEIPT -->
+            <div class="col-md-6">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="m-0">Order Receipt</h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <p class="m-0">Subtotal</p>
+                            <p class="fw-bold m-0">₹{{ subtotal }}</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <p class="m-0">Delivery Charge</p>
+                            <p class="fw-bold m-0">₹{{ delivery }}</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <p class="m-0">GST (5%)</p>
+                            <p class="fw-bold m-0">₹{{ gst }}</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <p class="m-0">Discount (10%)</p>
+                            <p class="fw-bold text-success m-0">- ₹{{ discount }}</p>
+                        </div>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-between fs-5">
+                            <p class="fw-bold m-0">Total Payable</p>
+                            <p class="fw-bold text-success m-0">₹{{ totalprice }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: ADDRESS SHOWN (NO FORM) + PAYMENT BUTTON -->
+            <div class="col-md-5">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="m-0">Delivery Address</h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <p class="fw-bold mb-1">Name : {{ checkout_address.Fullame }}</p>
+                        <p class="m-0">Address : {{ checkout_address.Address }}, {{ checkout_address.City }}</p>
+                        <p class="m-0">Pincode: {{ checkout_address.Pincode }}</p>
+                        <p class="m-0 text-muted">Email Id : {{ checkout_address.Email }}</p>
+
+                        <hr>
+
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="amount" value="{{ total_amount }}">
+                            <input type="hidden" name="checkout_id" value="{{ checkout.id }}">
+
+                            <button type="submit"
+                                    class="btn btn-success w-100 fw-bold py-2 mt-2">
+                                Proceed to Pay
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
@@ -304,21 +380,21 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 {% if messages %}
-    {% for i in messages %}
-        {% if 'success' in i.tags %}
-            <script> swal('{{i}}', '', 'success'); </script>
+{% for i in messages %}
+{% if 'success' in i.tags %}
+<script> swal('{{i}}', '', 'success'); </script>
 
-        {% elif 'warning' in i.tags %}
-            <script> swal('{{i}}', '', 'warning'); </script>
+{% elif 'warning' in i.tags %}
+<script> swal('{{i}}', '', 'warning'); </script>
 
-        {% elif 'info' in i.tags %}
-            <script> swal('{{i}}', '', 'info'); </script>
+{% elif 'info' in i.tags %}
+<script> swal('{{i}}', '', 'info'); </script>
 
-        {% elif 'error' in i.tags %}
-            <script> swal('{{i}}', '', 'error'); </script>
+{% elif 'error' in i.tags %}
+<script> swal('{{i}}', '', 'error'); </script>
 
-        {% endif %}
-    {% endfor %}
+{% endif %}
+{% endfor %}
 {% endif %}
 
 </body>

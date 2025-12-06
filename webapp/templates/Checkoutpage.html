@@ -165,57 +165,65 @@
 
                         <div class="mb-3" hidden>
                             <label class="form-label fw-semibold">Total Amount</label>
-                            <input name="total_amount" class="form-control" type="text" required value="{{total_amount}}">
+                            <input name="total_amount" class="form-control" type="text" required
+                                   value="{{total_amount}}">
+                        </div>
+
+                        <div class="mb-3" hidden>
+                            <label class="form-label fw-semibold">Username</label>
+                            <input name="c_username" class="form-control" type="text" required
+                                   value="{{request.session.username}}">
                         </div>
 
 
-                        <a href="{% url 'PaymentPage' %}" type="submit" class="btn w-100 py-2"
-                           style="background-color:#4a6b50; color:#fff; font-weight:600;">Place Order</a>
+                        <button href="{% url 'PaymentPage' %}" type="submit" class="btn w-100 py-2"
+                                style="background-color:#4a6b50; color:#fff; font-weight:600;">Place Order
+                        </button>
                     </form>
                 </div>
             </div>
 
             <!-- Order Summary -->
             <div class="col-lg-5">
-                            <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                    <h5 class="fw-bold mb-4 text-uppercase" style="color:#4a6b50;">Receipt</h5>
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-4 text-uppercase" style="color:#4a6b50;">Receipt</h5>
 
 
-                    <div class="row mb-2">
-                        <div class="col-6">Sub Total</div>
-                        <div class="col-6 text-end fw-semibold">
-                            Rs. {{sub_total}}
+                        <div class="row mb-2">
+                            <div class="col-6">Sub Total</div>
+                            <div class="col-6 text-end fw-semibold">
+                                Rs. {{sub_total}}
+                            </div>
+                        </div>
+
+                        <!-- Delivery -->
+                        <div class="row mb-2">
+                            <div class="col-6">Delivery Charges</div>
+                            <div class="col-6 text-end fw-semibold">Rs. {{delivery}}</div>
+                        </div>
+
+                        <!-- GST -->
+                        <div class="row mb-2">
+                            <div class="col-6">GST (5%)</div>
+                            <div class="col-6 text-end fw-semibold">Rs. {{gst}}</div>
+                        </div>
+
+                        <!-- Discount -->
+                        <div class="row mb-2">
+                            <div class="col-6">Discount</div>
+                            <div class="col-6 text-end text-success fw-semibold">Rs. {{discount}}</div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Final Total -->
+                        <div class="row total-price mb-3">
+                            <div class="col-6 fw-bold">Total Amount</div>
+                            <div class="col-6 text-end fw-bold text-dark">Rs. {{total_amount}}</div>
                         </div>
                     </div>
-
-                    <!-- Delivery -->
-                    <div class="row mb-2">
-                        <div class="col-6">Delivery Charges</div>
-                         <div class="col-6 text-end fw-semibold">Rs. {{delivery}}</div>
-                    </div>
-
-                    <!-- GST -->
-                    <div class="row mb-2">
-                        <div class="col-6">GST (5%)</div>
-                        <div class="col-6 text-end fw-semibold">Rs. {{gst}}</div>
-                    </div>
-
-                    <!-- Discount -->
-                    <div class="row mb-2">
-                        <div class="col-6">Discount</div>
-                        <div class="col-6 text-end text-success fw-semibold">Rs. {{discount}}</div>
-                    </div>
-
-                    <hr>
-
-                    <!-- Final Total -->
-                    <div class="row total-price mb-3">
-                        <div class="col-6 fw-bold">Total Amount</div>
-                        <div class="col-6 text-end fw-bold text-dark">Rs. {{total_amount}}</div>
-                    </div>
                 </div>
-            </div>
 
             </div>
         </div>
@@ -394,21 +402,21 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 {% if messages %}
-    {% for i in messages %}
-        {% if 'success' in i.tags %}
-            <script> swal('{{i}}', '', 'success'); </script>
+{% for i in messages %}
+{% if 'success' in i.tags %}
+<script> swal('{{i}}', '', 'success'); </script>
 
-        {% elif 'warning' in i.tags %}
-            <script> swal('{{i}}', '', 'warning'); </script>
+{% elif 'warning' in i.tags %}
+<script> swal('{{i}}', '', 'warning'); </script>
 
-        {% elif 'info' in i.tags %}
-            <script> swal('{{i}}', '', 'info'); </script>
+{% elif 'info' in i.tags %}
+<script> swal('{{i}}', '', 'info'); </script>
 
-        {% elif 'error' in i.tags %}
-            <script> swal('{{i}}', '', 'error'); </script>
+{% elif 'error' in i.tags %}
+<script> swal('{{i}}', '', 'error'); </script>
 
-        {% endif %}
-    {% endfor %}
+{% endif %}
+{% endfor %}
 {% endif %}
 
 </body>
