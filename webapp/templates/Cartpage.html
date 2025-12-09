@@ -157,14 +157,15 @@
                             <tr class="text-center">
                                 <td>
                                     <img src="{{ i.Singlepottery_image.url }}" alt="Product Image" width="250px"
-                                         height="250px" class="rounded-circle" >
+                                         height="250px" class="rounded-circle">
                                 </td>
                                 <td><strong>{{i.Singlepottery_name}}</strong></td>
                                 <td>₹{{i.Singlepottery_price}}</td>
                                 <td>{{i.Singlepottery_quantity}}</td>
                                 <td>₹{{i.Singlepottery_total}}</td>
                                 <td>
-                                    <a href="{% url 'deletecart' c_id=i.id %}" class="btn btn-outline-danger "> Remove </a>
+                                    <a href="{% url 'deletecart' c_id=i.id %}" class="btn btn-outline-danger ">
+                                        Remove </a>
                                 </td>
                             </tr>
                             {% empty %}
@@ -204,7 +205,7 @@
                     <!-- Delivery -->
                     <div class="row mb-2">
                         <div class="col-6">Delivery Charges</div>
-                         <div class="col-6 text-end fw-semibold">Rs. {{delivery}}</div>
+                        <div class="col-6 text-end fw-semibold">Rs. {{delivery}}</div>
                     </div>
 
                     <!-- GST -->
