@@ -178,25 +178,25 @@ def PaymentPage(request):
     discount = round(subtotal * 0.10)
     totalprice = (subtotal + gst + delivery) - discount
 
-        # address fetch
+    # address fetch
     checkout_address = Checkoutdb.objects.filter(Checkout_Username=request.session['username']).first()
     cart_count = Cartdb.objects.filter(Singlepottery_username=request.session['username']).count()
 
-    #PAYMENT DATA FETCHED
-    customer=Checkoutdb.objects.order_by("-id").first()
-    pay=customer.Total_amount
-    amount=int(pay*100)
-    pay_str=str(amount)
+    # PAYMENT DATA FETCHED
+    customer = Checkoutdb.objects.order_by("-id").first()
+    pay = customer.Total_amount
+    amount = int(pay * 100)
+    pay_str = str(amount)
 
     return render(request, "Paymentpage.html", {'product': product,
-                                                    'cart_count': cart_count,
-                                                    'subtotal': subtotal,
-                                                    'discount': discount,
-                                                    'delivery': delivery,
-                                                    'totalprice': totalprice,
-                                                    'gst': gst,
-                                                    'checkout_address': checkout_address
-                                                    })
+                                                'cart_count': cart_count,
+                                                'subtotal': subtotal,
+                                                'discount': discount,
+                                                'delivery': delivery,
+                                                'totalprice': totalprice,
+                                                'gst': gst,
+                                                'checkout_address': checkout_address
+                                                })
 
 
 def savebooking(request):
