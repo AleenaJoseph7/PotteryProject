@@ -1,3 +1,6 @@
+from platform import uname
+
+import razorpay
 from django.shortcuts import render, redirect
 from Myapp.models import productdb, potterydb, catergorydb
 from webapp.models import Signupdb, Bookingdb, Orderdb, Cartdb, Checkoutdb
@@ -188,6 +191,11 @@ def PaymentPage(request):
     amount = int(pay * 100)
     pay_str = str(amount)
 
+    if request.method=='POST':
+        client=razorpay.Client(auth=('rzp_test_0ib0jPwwZ7I1lT', 'VjHNO5zKeKxz8PYe7VnzwxMR'))
+        payment=clientorder.create({'amount':amount,'currency':'INR'})
+
+
     return render(request, "Paymentpage.html", {'product': product,
                                                 'cart_count': cart_count,
                                                 'subtotal': subtotal,
@@ -195,8 +203,15 @@ def PaymentPage(request):
                                                 'delivery': delivery,
                                                 'totalprice': totalprice,
                                                 'gst': gst,
-                                                'checkout_address': checkout_address
+                                                'checkout_address': checkout_address,
+                                                'pay_str':pay_str
                                                 })
+
+def payment_success(request):
+    uname=request.session.get('username')
+    Cartdb.objects.filter(Singlepottery_username=uname).delete()
+    messages.success(request,"The Payment Succesfull!")
+    return redirect(Homepage)
 
 
 def savebooking(request):
