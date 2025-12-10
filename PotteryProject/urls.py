@@ -23,7 +23,7 @@ import webapp.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('PoteriaAdmin/',include(Myapp.urls)),
+    path('',include(Myapp.urls)),
     path('PoteriaSite/',include(webapp.urls))
 ]
 urlpatterns+=staticfiles_urlpatterns()

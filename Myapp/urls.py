@@ -31,7 +31,7 @@ urlpatterns=[
     path('displaybooking/',views.displaybooking,name="displaybooking"),
     path('deletebooking/<int:b_id>/',views.deletebooking,name="deletebooking"),
 
-    path('AdminLoginPage/', views.adminloginpage, name="AdminLoginPage"),
+    path('', views.adminloginpage, name="AdminLoginPage"),
     path('AdminLogin/', views.adminlogin, name="AdminLogin"),
     path('AdminLogout/',views.adminlogout,name="AdminLogout"),
 ]
