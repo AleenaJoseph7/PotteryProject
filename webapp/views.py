@@ -209,7 +209,8 @@ def PaymentPage(request):
 
 def payment_success(request):
     uname=request.session.get('username')
-    Cartdb.objects.filter(Singlepottery_username=uname).delete()
+    if uname:
+        Cartdb.objects.filter(Singlepottery_username=uname).delete()
     messages.success(request,"The Payment Succesfull!")
     return redirect(Homepage)
 
