@@ -193,7 +193,7 @@ def PaymentPage(request):
 
     if request.method=='POST':
         client=razorpay.Client(auth=('rzp_test_0ib0jPwwZ7I1lT', 'VjHNO5zKeKxz8PYe7VnzwxMR'))
-        payment=clientorder.create({'amount':amount,'currency':'INR'})
+        payment=client.order.create({'amount':amount,'currency':'INR'})
 
 
     return render(request, "Paymentpage.html", {'product': product,
