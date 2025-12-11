@@ -309,16 +309,6 @@ def savecheckout(request):
         return redirect(PaymentPage)
 
 
-def editcheckout(request):
-    data = Checkoutdb.objects.all()
-    return render(request, "checkoutdisplay.html", {'data': data})
-
-
-def deletecheckout(request, d_id):
-    data = Checkoutdb.objects.filter(id=d_id).delete()
-    return redirect(editcheckout)
-
-
 def usersignup(request):
     return render(request, "Usersignup.html")
 
