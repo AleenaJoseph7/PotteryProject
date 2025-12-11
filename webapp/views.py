@@ -309,6 +309,8 @@ def savecheckout(request):
         return redirect(PaymentPage)
 
 
+
+
 def usersignup(request):
     return render(request, "Usersignup.html")
 

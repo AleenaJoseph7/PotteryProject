@@ -31,7 +31,7 @@ urlpatterns = [
     path('displaybooking/', views.displaybooking, name="displaybooking"),
     path('deletebooking/<int:b_id>/', views.deletebooking, name="deletebooking"),
 
-    path('Checkoutpage/', views.Checkoutpage, name="Checkoutpage"),
+    path('editcheckout/', views.editcheckout, name="editcheckout"),
     path('deletecheckout/<int:d_id>/', views.deletecheckout, name="deletecheckout"),
 
     path('', views.adminloginpage, name="AdminLoginPage"),
