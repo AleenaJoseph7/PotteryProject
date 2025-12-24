@@ -182,7 +182,7 @@ def PaymentPage(request):
     totalprice = (subtotal + gst + delivery) - discount
 
     # address fetch
-    checkout_address = Checkoutdb.objects.filter(Checkout_Username=request.session['username']).first()
+    checkout_address = Checkoutdb.objects.filter(Checkout_Username=request.session['username']).last()
     cart_count = Cartdb.objects.filter(Singlepottery_username=request.session['username']).count()
 
     # PAYMENT DATA FETCHED
