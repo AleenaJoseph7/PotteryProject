@@ -138,17 +138,17 @@
                     <div class="row mb-3">
                         <div class="col">
                             <label class="form-label">First Name</label>
-                            <input type="text" placeholder="Enter First Name" class="form-control" name="book_first">
+                            <input type="text" placeholder="Enter First Name" class="form-control" name="book_first" required>
                         </div>
                         <div class="col">
                             <label class="form-label">Last Name</label>
-                            <input type="text" placeholder="Enter Last Name" class="form-control" name="book_last">
+                            <input type="text" placeholder="Enter Last Name" class="form-control" name="book_last" required>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Age</label>
-                        <input type="text" placeholder="Enter Age" class="form-control" name="book_age">
+                        <input type="text" placeholder="Enter Age" class="form-control" name="book_age" required>
                     </div>
 
                     <div class="mb-3">
@@ -162,23 +162,23 @@
 
                     <div class="mb-3">
                         <label class="form-label">Address</label>
-                        <textarea placeholder="Enter Address" class="form-control" name="book_address"></textarea>
+                        <textarea placeholder="Enter Address" class="form-control" name="book_address" required></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Mobile Number</label>
                         <input type="tel" placeholder="Enter Mobile Number" class="form-control" name="book_mobile"
-                               pattern="[0-9]{10}" minlength="10" maxlength="10">
+                               pattern="[0-9]{10}" minlength="10" maxlength="10" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" placeholder="Enter Email" class="form-control" name="book_email">
+                        <input type="email" placeholder="Enter Email" class="form-control" name="book_email" required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Select Class Duration</label>
-                        <select class="form-control" name="book_class">
+                        <select class="form-control" name="book_class" required>
                             <option>-- Select Option --</option>
                             {% for i in duration %}
                             <option>{{i.Duration}}</option>
