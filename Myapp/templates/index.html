@@ -54,175 +54,174 @@
                     <i class="ti ti-x fs-6"></i>
                 </div>
             </div>
-<nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-    <ul id="sidebarnav">
+            <nav class="sidebar-nav scroll-sidebar" data-simplebar="" style="height:100vh">
+                <ul id="sidebarnav">
 
-        <!-- Home -->
-        <li class="nav-small-cap">
-            <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
-            <span class="hide-menu">Home</span>
-        </li>
+                    <!-- Home -->
+                    <li class="nav-small-cap">
+                        <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
+                        <span class="hide-menu">Home</span>
+                    </li>
 
-        <!-- Dashboard -->
-        <li class="sidebar-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
-            <a class="sidebar-link" href="{% url 'index' %}">
-                <i class="ti ti-home"></i>
-                <span class="hide-menu">Dashboard</span>
-            </a>
-        </li>
+                    <!-- Dashboard -->
+                    <li class="sidebar-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+                        <a class="sidebar-link" href="{% url 'index' %}">
+                            <i class="ti ti-home"></i>
+                            <span class="hide-menu">Dashboard</span>
+                        </a>
+                    </li>
 
-        <li><span class="sidebar-divider lg"></span></li>
+                    <li><span class="sidebar-divider lg"></span></li>
 
-        <!-- Apps -->
-        <li class="nav-small-cap">
-            <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
-            <span class="hide-menu">Apps</span>
-        </li>
+                    <!-- Apps -->
+                    <li class="nav-small-cap">
+                        <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
+                        <span class="hide-menu">Apps</span>
+                    </li>
 
-        <!-- Orders -->
-        <li class="sidebar-item">
-            <a class="sidebar-link has-arrow"
-               data-bs-toggle="collapse"
-               data-bs-target="#orderMenu">
-                <div class="d-flex align-items-center gap-3">
-                    <i class="ti ti-shopping-cart"></i>
-                    <span class="hide-menu">Orders</span>
-                </div>
-            </a>
+                    <!-- Orders -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#orderMenu">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="ti ti-shopping-cart"></i>
+                                <span class="hide-menu">Orders</span>
+                            </div>
+                        </a>
 
-            <ul id="orderMenu" class="collapse first-level list-unstyled ms-3"
-                data-bs-parent="#sidebarnav">
-                <li class="sidebar-item">
-                    <a href="{% url 'displayorder' %}" class="sidebar-link">
-                        <i class="ti ti-circle"></i>View Pottery Orders
-                    </a>
-                </li>
-            </ul>
-        </li>
+                        <ul id="orderMenu" class="collapse first-level list-unstyled ms-3"
+                            data-bs-parent="#sidebarnav">
+                            <li class="sidebar-item">
+                                <a href="{% url 'displayorder' %}" class="sidebar-link">
+                                    <i class="ti ti-circle"></i>View Pottery Orders
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-        <!-- Checkout -->
-        <li class="sidebar-item">
-            <a class="sidebar-link has-arrow"
-               data-bs-toggle="collapse"
-               data-bs-target="#checkoutMenu">
-                <div class="d-flex align-items-center gap-3">
-                    <i class="ti ti-credit-card"></i>
-                    <span class="hide-menu">Checkout</span>
-                </div>
-            </a>
+                    <!-- Checkout -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#checkoutMenu">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="ti ti-credit-card"></i>
+                                <span class="hide-menu">Checkout</span>
+                            </div>
+                        </a>
 
-            <ul id="checkoutMenu" class="collapse first-level list-unstyled ms-3"
-                data-bs-parent="#sidebarnav">
-                <li class="sidebar-item">
-                    <a href="{% url 'editcheckout' %}" class="sidebar-link">
-                        <i class="ti ti-circle"></i>View Checkout Details
-                    </a>
-                </li>
-            </ul>
-        </li>
+                        <ul id="checkoutMenu" class="collapse first-level list-unstyled ms-3"
+                            data-bs-parent="#sidebarnav">
+                            <li class="sidebar-item">
+                                <a href="{% url 'editcheckout' %}" class="sidebar-link">
+                                    <i class="ti ti-circle"></i>View Checkout Details
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-        <!-- Booking -->
-        <li class="sidebar-item">
-            <a class="sidebar-link has-arrow"
-               data-bs-toggle="collapse"
-               data-bs-target="#bookingMenu">
-                <div class="d-flex align-items-center gap-3">
-                    <i class="ti ti-calendar-event"></i>
-                    <span class="hide-menu">Booking</span>
-                </div>
-            </a>
+                    <!-- Booking -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#bookingMenu">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="ti ti-calendar-event"></i>
+                                <span class="hide-menu">Booking</span>
+                            </div>
+                        </a>
 
-            <ul id="bookingMenu" class="collapse first-level list-unstyled ms-3"
-                data-bs-parent="#sidebarnav">
-                <li class="sidebar-item">
-                    <a href="{% url 'displaybooking' %}" class="sidebar-link">
-                        <i class="ti ti-circle"></i>View Bookings
-                    </a>
-                </li>
-            </ul>
-        </li>
+                        <ul id="bookingMenu" class="collapse first-level list-unstyled ms-3"
+                            data-bs-parent="#sidebarnav">
+                            <li class="sidebar-item">
+                                <a href="{% url 'displaybooking' %}" class="sidebar-link">
+                                    <i class="ti ti-circle"></i>View Bookings
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-        <!-- Class -->
-        <li class="sidebar-item">
-            <a class="sidebar-link has-arrow"
-               data-bs-toggle="collapse"
-               data-bs-target="#classMenu">
-                <div class="d-flex align-items-center gap-3">
-                    <i class="ti ti-school"></i>
-                    <span class="hide-menu">Class</span>
-                </div>
-            </a>
+                    <!-- Class -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#classMenu">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="ti ti-school"></i>
+                                <span class="hide-menu">Class</span>
+                            </div>
+                        </a>
 
-            <ul id="classMenu" class="collapse first-level list-unstyled ms-3"
-                data-bs-parent="#sidebarnav">
-                <li class="sidebar-item">
-                    <a href="{% url 'catergory' %}" class="sidebar-link">
-                        <i class="ti ti-circle"></i>Add Class
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="{% url 'displaycatergory' %}" class="sidebar-link">
-                        <i class="ti ti-circle"></i>View Class Details
-                    </a>
-                </li>
-            </ul>
-        </li>
+                        <ul id="classMenu" class="collapse first-level list-unstyled ms-3"
+                            data-bs-parent="#sidebarnav">
+                            <li class="sidebar-item">
+                                <a href="{% url 'catergory' %}" class="sidebar-link">
+                                    <i class="ti ti-circle"></i>Add Class
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{% url 'displaycatergory' %}" class="sidebar-link">
+                                    <i class="ti ti-circle"></i>View Class Details
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-        <!-- Category -->
-        <li class="sidebar-item">
-            <a class="sidebar-link has-arrow"
-               data-bs-toggle="collapse"
-               data-bs-target="#categoryMenu">
-                <div class="d-flex align-items-center gap-3">
-                    <i class="ti ti-category"></i>
-                    <span class="hide-menu">Category</span>
-                </div>
-            </a>
+                    <!-- Category -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#categoryMenu">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="ti ti-category"></i>
+                                <span class="hide-menu">Category</span>
+                            </div>
+                        </a>
 
-            <ul id="categoryMenu" class="collapse first-level list-unstyled ms-3"
-                data-bs-parent="#sidebarnav">
-                <li class="sidebar-item">
-                    <a href="{% url 'product' %}" class="sidebar-link">
-                        <i class="ti ti-circle"></i>Add Category
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="{% url 'displayproduct' %}" class="sidebar-link">
-                        <i class="ti ti-circle"></i>View Category Details
-                    </a>
-                </li>
-            </ul>
-        </li>
+                        <ul id="categoryMenu" class="collapse first-level list-unstyled ms-3"
+                            data-bs-parent="#sidebarnav">
+                            <li class="sidebar-item">
+                                <a href="{% url 'product' %}" class="sidebar-link">
+                                    <i class="ti ti-circle"></i>Add Category
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{% url 'displayproduct' %}" class="sidebar-link">
+                                    <i class="ti ti-circle"></i>View Category Details
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-        <!-- Pottery Product -->
-        <li class="sidebar-item">
-            <a class="sidebar-link has-arrow"
-               data-bs-toggle="collapse"
-               data-bs-target="#productMenu">
-                <div class="d-flex align-items-center gap-3">
-                    <i class="ti ti-package"></i>
-                    <span class="hide-menu">Pottery Product</span>
-                </div>
-            </a>
+                    <!-- Pottery Product -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#productMenu">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="ti ti-package"></i>
+                                <span class="hide-menu">Pottery Product</span>
+                            </div>
+                        </a>
 
-            <ul id="productMenu" class="collapse first-level list-unstyled ms-3"
-                data-bs-parent="#sidebarnav">
-                <li class="sidebar-item">
-                    <a href="{% url 'addpottery' %}" class="sidebar-link">
-                        <i class="ti ti-circle"></i>Add Product
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="{% url 'displaypottery' %}" class="sidebar-link">
-                        <i class="ti ti-circle"></i>View Product Details
-                    </a>
-                </li>
-            </ul>
-        </li>
+                        <ul id="productMenu" class="collapse first-level list-unstyled ms-3"
+                            data-bs-parent="#sidebarnav">
+                            <li class="sidebar-item">
+                                <a href="{% url 'addpottery' %}" class="sidebar-link">
+                                    <i class="ti ti-circle"></i>Add Product
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{% url 'displaypottery' %}" class="sidebar-link">
+                                    <i class="ti ti-circle"></i>View Product Details
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-    </ul>
-</nav>
-
+                </ul>
+            </nav>
 
 
         </div>
@@ -371,20 +370,18 @@
                 {% endblock %}
 
             </div>
-   </div>
-</div>
-
-            <div class="py-6 px-6 text-center container-fluid" style="background-color:lightblue; color:#ffffff;">
-                <p class="mb-0 fs-4">
-                    © 2025 <strong>Poteria</strong>. All Rights Reserved. <br>
-                    Designed and Developed by
-                    <a href="#" class="text-primary text-decoration-underline" style="color:#00bcd4;">Team Poteria</a>
-                </p>
-            </div>
-
         </div>
+    </div>
 
+    <div class="py-6 px-6 text-center container-fluid" style="background-color:lightblue; color:#ffffff;">
+        <p class="mb-0 fs-4">
+            © 2025 <strong>Poteria</strong>. All Rights Reserved. <br>
+            Designed and Developed by
+            <a href="#" class="text-primary text-decoration-underline" style="color:#00bcd4;">Team Poteria</a>
+        </p>
+    </div>
 
+</div>
 
 
 <!-- JS -->
