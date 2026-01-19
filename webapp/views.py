@@ -114,7 +114,7 @@ def Categorypage(request, product_name):
         cart_count = Cartdb.objects.filter(Singlepottery_username=uname).count()
     product = productdb.objects.all()
     pottery = potterydb.objects.filter(Pottery_category=product_name)
-    return render(request, "Categorypage.html.",
+    return render(request, "Categorypage.html",
                   {'product': product, 'pottery': pottery, 'product_name': product_name, 'cart_count': cart_count})
 
 
