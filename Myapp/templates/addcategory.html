@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
@@ -15,7 +13,8 @@
 
              <div class="mb-3">
                         <label class="form-label">Class Duration :</label>
-                       <input type="text" placeholder="Class Duration" name="duration" class="form-control" required>
+                       <input type="text" placeholder="Class Duration" name="duration" class="form-control" required onkeyup="validationduration()" >
+                 <small class="text-danger" id="duration"></small>
              </div>
 
             <div class="text-center">
@@ -43,6 +42,13 @@
         {% endif %}
     {% endfor %}
 {% endif %}
-</body>
-</html>
+
+<script>
+    window.addEventListener("DOMContentLoaded",function(){
+    const duration=document.getElementbyid('duration').value
+
+
+    })
+</script>
+
 {% endblock %}
