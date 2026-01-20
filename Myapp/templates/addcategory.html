@@ -4,18 +4,17 @@
 
 <div class="container-fluid" style="padding:5px; margin-bottom:120px;">
     <div class="container mt-5 mb-5 p-5 rounded shadow"
-         style="max-width: 600px; background-color: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.4);">
+        style="max-width: 600px; background-color: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.4);">
         <h2 class="text-center mb-4" style="color: rgb(14, 59, 36); font-family:'Georgia', serif;">Place Your Order</h2>
 
         <form method="POST" action="{% url 'savecatergory' %}" name="myform" onsubmit="return validations()">
             {% csrf_token %}
 
-            <div class="mb-3">
-                <label class="form-label">Class Duration :</label>
-                <input type="text" placeholder="Class Duration" name="duration" class="form-control" required
-                       onkeyup="validationduration()">
-                <small class="text-danger" id="durationerror"></small>
-            </div>
+             <div class="mb-3">
+                        <label class="form-label">Class Duration :</label>
+                       <input type="text" placeholder="Class Duration" name="duration" class="form-control" required onkeyup="validationduration()" >
+                 <small class="text-danger" id="durationerror"></small>
+             </div>
 
             <div class="text-center">
                 <button type="submit" class="btn btn-success me-2" style="width: 120px;">Submit</button>
@@ -26,40 +25,42 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 {% if messages %}
-{% for i in messages %}
-{% if 'success' in i.tags %}
-<script> swal('{{i}}', '', 'success'); </script>
+    {% for i in messages %}
+        {% if 'success' in i.tags %}
+            <script> swal('{{i}}', '', 'success'); </script>
 
-{% elif 'warning' in i.tags %}
-<script> swal('{{i}}', '', 'warning'); </script>
+        {% elif 'warning' in i.tags %}
+            <script> swal('{{i}}', '', 'warning'); </script>
 
-{% elif 'info' in i.tags %}
-<script> swal('{{i}}', '', 'info'); </script>
+        {% elif 'info' in i.tags %}
+            <script> swal('{{i}}', '', 'info'); </script>
 
-{% elif 'error' in i.tags %}
-<script> swal('{{i}}', '', 'error'); </script>
+        {% elif 'error' in i.tags %}
+            <script> swal('{{i}}', '', 'error'); </script>
 
-{% endif %}
-{% endfor %}
+        {% endif %}
+    {% endfor %}
 {% endif %}
 
 <script>
-    document.addEventListener("DOMContentLoaded",function(){
-    const durationerror=document.getElementbyid('durationerror')
+document.addEventListener("DOMContentLoaded", function () {
+  const durationerror = document.getElementById('durationerror');
+  const myform = document.forms['myform'];
 
-    window.validationduration=function(){
-    durationerror.innerHTML="/[0-9]+(?:\s[A-Z][a-z]+)".test(myform.duration.value.trim())
-    ? "" : "Please enter a valid Class";
+  window.validationduration = function () {
+    durationerror.textContent =
+      /^(1 day - Rs 500|1 week - 2500|1 month - Rs 20,000|6 month - Rs 50,000)$/
+      .test(myform.duration.value.trim())
+        ? ""
+        : "Please enter a valid Class";
+  };
 
-    }
-
-   window.validations=function(){
-   validationduration();
-   return document.querySelectorAll(".text-danger:not(:empty)").length===0;
-   }
-
-
-    })
+  window.validations = function () {
+    validationduration();
+    return document.querySelectorAll(".text-danger:not(:empty)").length === 0;
+  };
+});
 </script>
+
 
 {% endblock %}

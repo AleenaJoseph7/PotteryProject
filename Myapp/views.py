@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from  django.contrib.auth import authenticate,login
 from Myapp.models import catergorydb,productdb,potterydb
 from webapp.models import Orderdb,Bookingdb,Checkoutdb
-import  datetime
+import  datetime,re
 
 from django.contrib import messages
 
@@ -32,6 +32,12 @@ def catergory(request):
 def savecatergory(request):
     if request.method=='POST':
         duration=request.POST.get('duration')
+
+        durationregex=r"^(1 day - Rs 500|1 week - 2500|1 month - Rs 20,000|6 month - Rs 50,000)$"
+
+        if not re.match(duration,durationregex):
+            messages.error(request,"Please enter a valid Class")
+            return redirect(catergory)
         ob=catergorydb(Duration=duration)
         ob.save()
         messages.success(request,"Catergory Saved Succesfully!")
