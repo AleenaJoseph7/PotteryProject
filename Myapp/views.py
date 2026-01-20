@@ -209,10 +209,10 @@ def adminlogin(request):
                 messages.success(request, "Login Succesfully!")
                 return redirect(indexpage)
             else:
-                messages.warning(request, "Username or password Incorrect!")
+                messages.warning(request, " Incorrect password!")
                 return redirect(adminloginpage)
         else:
-            messages.warning(request, "Username or password Incorrect!")
+            messages.warning(request, "Incorrect Username!")
             return redirect(adminloginpage)
 
 def adminlogout(request):

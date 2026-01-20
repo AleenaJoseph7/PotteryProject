@@ -260,14 +260,11 @@
 <script src="{% static 'js/jquery-3.7.1.min' %}"></script>
 
 <script>
-    $(document).ready(function(){
-    $("#singlepottery_quantity").change(function(){
-    let singlepotteryquantity=document.getElementById("singlepottery_quantity").value;
-    let singlepotteryprice=document.getElementById("singlepottery_price").value;
-    let result=singlepotteryquantity*singlepotteryprice;
-
-
-    document.getElementById("singlepottery_total").value=result;
+    document.addEventListener("DOMContentLoaded",function(){
+    document.getElementById("singlepottery_quantity").addEventListener("change", function(){
+    let price=document.getElementById("singlepottery_price").value;
+    let quantity=this.value;
+    document.getElementById("singlepottery_total").value=price*quantity;
     })
     })
 </script>
