@@ -1,82 +1,75 @@
-
 {% extends 'index.html' %}
 {% load static %}
 {% block content %}
 
-<head>
-  <meta charset="UTF-8">
-  <title>Booking Details</title>
-</head>
-
-<body>
-  <div class="container-fluid" style="margin:0px; padding:0px; margin-bottom:150px">
+<div class="container-fluid" style="margin:0px; padding:0px; margin-bottom:150px">
     <div class="card mb-5" style="width:auto; margin:0px; border:1px solid lightgrey; height:auto; ">
-      <div class="card-body">
-        <h1 class="text-center mb-5" style="color:darkgreen; font-size:35px; font-weight:bold; font-family:Arial;">
-          Booking Details
-        </h1>
+        <div class="card-body">
+            <h1 class="text-center mb-5" style="color:darkgreen; font-size:35px; font-weight:bold; font-family:Arial;">
+                Booking Details
+            </h1>
 
-        <!-- Responsive wrapper -->
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover table-success align-middle">
-            <thead class="table-success">
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Address</th>
-                <th>Mobile</th>
-                <th>Email</th>
-                <th>Class Duration</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
+            <!-- Responsive wrapper -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-success align-middle">
+                    <thead class="table-success">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Class Duration</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
 
-            <tbody>
-              {% for i in data %}
-              <tr>
-                <td>{{ i.Booking_firstname }}</td>
-                <td>{{ i.Booking_lastname }}</td>
-                <td>{{ i.Booking_age }}</td>
-                <td>{{ i.Booking_gender }}</td>
-                <td>{{ i.Booking_address }}</td>
-                <td>{{ i.Booking_mobile }}</td>
-                <td>{{ i.Booking_email }}</td>
-                <td>{{ i.Booking_class }}</td>
-                  <td>
-                  <a href="{% url 'deletebooking' b_id=i.id %}">
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                  </a>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+                    <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ i.Booking_firstname }}</td>
+                        <td>{{ i.Booking_lastname }}</td>
+                        <td>{{ i.Booking_age }}</td>
+                        <td>{{ i.Booking_gender }}</td>
+                        <td>{{ i.Booking_address }}</td>
+                        <td>{{ i.Booking_mobile }}</td>
+                        <td>{{ i.Booking_email }}</td>
+                        <td>{{ i.Booking_class }}</td>
+                        <td>
+                            <a href="{% url 'deletebooking' b_id=i.id %}">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Responsive wrapper -->
+
         </div>
-        <!-- End Responsive wrapper -->
-
-      </div>
     </div>
-  </div>
+</div>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 {% if messages %}
-    {% for i in messages %}
-        {% if 'success' in i.tags %}
-            <script> swal('{{i}}', '', 'success'); </script>
+{% for i in messages %}
+{% if 'success' in i.tags %}
+<script> swal('{{i}}', '', 'success'); </script>
 
-        {% elif 'warning' in i.tags %}
-            <script> swal('{{i}}', '', 'warning'); </script>
+{% elif 'warning' in i.tags %}
+<script> swal('{{i}}', '', 'warning'); </script>
 
-        {% elif 'info' in i.tags %}
-            <script> swal('{{i}}', '', 'info'); </script>
+{% elif 'info' in i.tags %}
+<script> swal('{{i}}', '', 'info'); </script>
 
-        {% elif 'error' in i.tags %}
-            <script> swal('{{i}}', '', 'error'); </script>
+{% elif 'error' in i.tags %}
+<script> swal('{{i}}', '', 'error'); </script>
 
-        {% endif %}
-    {% endfor %}
+{% endif %}
+{% endfor %}
 {% endif %}
 
 {% endblock %}
